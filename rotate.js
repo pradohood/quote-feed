@@ -28,10 +28,9 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <description>Daily mindset and motivation quote</description>
     <link>https://pradohood.github.io/quote-feed/</link>
 
-    <item>
-      <title>${esc(quote.text)}</title>
-      <description>— ${esc(quote.author)}</description>
-    </item>
+<item>
+  <title>${esc(quote.text)} — ${esc(quote.author)}</title>
+</item>
 
   </channel>
 </rss>
