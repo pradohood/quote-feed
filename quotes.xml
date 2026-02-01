@@ -1,21 +1,804 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>Quote of the Day</title>
-    <description>Daily mindset and motivation quotes</description>
+    <description>365 mindset and motivation quotes from real people</description>
     <link>https://pradohood.github.io/quote-feed/</link>
 
-    <item>
-      <title>We are what we repeatedly do.</title>
-      <description>— Aristotle</description>
-      <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
+    <!-- 1 -->
+    <item><title>We are what we repeatedly do. Excellence, then, is not an act but a habit.</title><description>— Aristotle</description></item>
+    <!-- 2 -->
+    <item><title>The journey of a thousand miles begins with one step.</title><description>— Lao Tzu</description></item>
+    <!-- 3 -->
+    <item><title>Waste no more time arguing what a good man should be. Be one.</title><description>— Marcus Aurelius</description></item>
+    <!-- 4 -->
+    <item><title>You have power over your mind, not outside events.</title><description>— Marcus Aurelius</description></item>
+    <!-- 5 -->
+    <item><title>We suffer more often in imagination than in reality.</title><description>— Seneca</description></item>
+    <!-- 6 -->
+    <item><title>Luck is what happens when preparation meets opportunity.</title><description>— Seneca</description></item>
+    <!-- 7 -->
+    <item><title>It always seems impossible until it’s done.</title><description>— Nelson Mandela</description></item>
+    <!-- 8 -->
+    <item><title>The future depends on what you do today.</title><description>— Mahatma Gandhi</description></item>
+    <!-- 9 -->
+    <item><title>Do what you can, with what you have, where you are.</title><description>— Theodore Roosevelt</description></item>
+    <!-- 10 -->
+    <item><title>Believe you can and you’re halfway there.</title><description>— Theodore Roosevelt</description></item>
 
-    <item>
-      <title>Stay hungry. Stay foolish.</title>
-      <description>— Steve Jobs</description>
-      <pubDate>Tue, 02 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
+    <!-- 11 -->
+    <item><title>Fall seven times, stand up eight.</title><description>— Japanese Proverb</description></item>
+    <!-- 12 -->
+    <item><title>Start where you are. Use what you have. Do what you can.</title><description>— Arthur Ashe</description></item>
+    <!-- 13 -->
+    <item><title>Make each day your masterpiece.</title><description>— John Wooden</description></item>
+    <!-- 14 -->
+    <item><title>Success is the sum of small efforts repeated day in and day out.</title><description>— Robert Collier</description></item>
+    <!-- 15 -->
+    <item><title>Don’t count the days. Make the days count.</title><description>— Muhammad Ali</description></item>
+    <!-- 16 -->
+    <item><title>If you’re going through hell, keep going.</title><description>— Winston Churchill</description></item>
+    <!-- 17 -->
+    <item><title>Success is not final, failure is not fatal.</title><description>— Winston Churchill</description></item>
+    <!-- 18 -->
+    <item><title>The secret of getting ahead is getting started.</title><description>— Mark Twain</description></item>
+    <!-- 19 -->
+    <item><title>Courage is resistance to fear, mastery of fear.</title><description>— Mark Twain</description></item>
+    <!-- 20 -->
+    <item><title>Simplicity is the ultimate sophistication.</title><description>— Leonardo da Vinci</description></item>
+
+    <!-- 21 -->
+    <item><title>Energy and persistence conquer all things.</title><description>— Benjamin Franklin</description></item>
+    <!-- 22 -->
+    <item><title>Well done is better than well said.</title><description>— Benjamin Franklin</description></item>
+    <!-- 23 -->
+    <item><title>Great things are done by a series of small things brought together.</title><description>— Vincent van Gogh</description></item>
+    <!-- 24 -->
+    <item><title>Act as if what you do makes a difference. It does.</title><description>— William James</description></item>
+    <!-- 25 -->
+    <item><title>You miss 100 percent of the shots you don’t take.</title><description>— Wayne Gretzky</description></item>
+    <!-- 26 -->
+    <item><title>I never dreamed about success. I worked for it.</title><description>— Estée Lauder</description></item>
+    <!-- 27 -->
+    <item><title>The harder I work, the luckier I get.</title><description>— Gary Player</description></item>
+    <!-- 28 -->
+    <item><title>Discipline is the bridge between goals and accomplishment.</title><description>— Jim Rohn</description></item>
+    <!-- 29 -->
+    <item><title>Don’t wish it were easier. Wish you were better.</title><description>— Jim Rohn</description></item>
+    <!-- 30 -->
+    <item><title>The only place success comes before work is the dictionary.</title><description>— Vidal Sassoon</description></item>
+
+    <!-- 31 -->
+    <item><title>If opportunity doesn’t knock, build a door.</title><description>— Milton Berle</description></item>
+    <!-- 32 -->
+    <item><title>The way to get started is to quit talking and begin doing.</title><description>— Walt Disney</description></item>
+    <!-- 33 -->
+    <item><title>If you can dream it, you can do it.</title><description>— Walt Disney</description></item>
+    <!-- 34 -->
+    <item><title>The best revenge is massive success.</title><description>— Frank Sinatra</description></item>
+    <!-- 35 -->
+    <item><title>Dream big. Start small. Act now.</title><description>— Robin Sharma</description></item>
+    <!-- 36 -->
+    <item><title>You do not rise to the level of your goals. You fall to the level of your systems.</title><description>— James Clear</description></item>
+    <!-- 37 -->
+    <item><title>Every action you take is a vote for the person you want to become.</title><description>— James Clear</description></item>
+    <!-- 38 -->
+    <item><title>Focus on systems, not goals.</title><description>— James Clear</description></item>
+    <!-- 39 -->
+    <item><title>What gets measured gets managed.</title><description>— Peter Drucker</description></item>
+    <!-- 40 -->
+    <item><title>Efficiency is doing things right. Effectiveness is doing the right things.</title><description>— Peter Drucker</description></item>
+
+    <!-- 41 -->
+    <item><title>Don’t be busy. Be productive.</title><description>— Tim Ferriss</description></item>
+    <!-- 42 -->
+    <item><title>What we fear doing most is usually what we most need to do.</title><description>— Tim Ferriss</description></item>
+    <!-- 43 -->
+    <item><title>If it scares you, it might be worth doing.</title><description>— Seth Godin</description></item>
+    <!-- 44 -->
+    <item><title>The cost of being wrong is less than the cost of doing nothing.</title><description>— Seth Godin</description></item>
+    <!-- 45 -->
+    <item><title>Your time is limited, so don’t waste it living someone else’s life.</title><description>— Steve Jobs</description></item>
+    <!-- 46 -->
+    <item><title>Stay hungry. Stay foolish.</title><description>— Steve Jobs</description></item>
+    <!-- 47 -->
+    <item><title>Innovation distinguishes between a leader and a follower.</title><description>— Steve Jobs</description></item>
+    <!-- 48 -->
+    <item><title>Focus is saying no.</title><description>— Steve Jobs</description></item>
+    <!-- 49 -->
+    <item><title>Be stubborn on vision, flexible on details.</title><description>— Jeff Bezos</description></item>
+    <!-- 50 -->
+    <item><title>Speed matters in business.</title><description>— Jeff Bezos</description></item>
+
+    <!-- 51 -->
+    <item><title>Your brand is what people say about you when you are not in the room.</title><description>— Jeff Bezos</description></item>
+    <!-- 52 -->
+    <item><title>When something is important enough, you do it even if the odds are against you.</title><description>— Elon Musk</description></item>
+    <!-- 53 -->
+    <item><title>Failure is an option here.</title><description>— Elon Musk</description></item>
+    <!-- 54 -->
+    <item><title>Persistence is very important.</title><description>— Elon Musk</description></item>
+    <!-- 55 -->
+    <item><title>Earn with your mind, not your time.</title><description>— Naval Ravikant</description></item>
+    <!-- 56 -->
+    <item><title>Play long-term games with long-term people.</title><description>— Naval Ravikant</description></item>
+    <!-- 57 -->
+    <item><title>Specific knowledge compounds.</title><description>— Naval Ravikant</description></item>
+    <!-- 58 -->
+    <item><title>Desire is a contract you make with yourself.</title><description>— Naval Ravikant</description></item>
+    <!-- 59 -->
+    <item><title>Calm is a superpower.</title><description>— Naval Ravikant</description></item>
+    <!-- 60 -->
+    <item><title>Discipline equals freedom.</title><description>— Jocko Willink</description></item>
+
+    <!-- 61 -->
+    <item><title>Pressure is a privilege.</title><description>— Billie Jean King</description></item>
+    <!-- 62 -->
+    <item><title>Success leaves clues.</title><description>— Tony Robbins</description></item>
+    <!-- 63 -->
+    <item><title>Clarity is power.</title><description>— Tony Robbins</description></item>
+    <!-- 64 -->
+    <item><title>A year from now you may wish you started today.</title><description>— Karen Lamb</description></item>
+    <!-- 65 -->
+    <item><title>What you do today can improve all your tomorrows.</title><description>— Ralph Marston</description></item>
+
+    <!-- 66 -->
+    <item><title>Success usually comes to those who are too busy to be looking for it.</title><description>— Henry David Thoreau</description></item>
+    <!-- 67 -->
+    <item><title>Knowing is not enough; we must apply.</title><description>— Johann Wolfgang von Goethe</description></item>
+    <!-- 68 -->
+    <item><title>Do the best you can until you know better. Then do better.</title><description>— Maya Angelou</description></item>
+    <!-- 69 -->
+    <item><title>If you want to lift yourself up, lift up someone else.</title><description>— Booker T. Washington</description></item>
+    <!-- 70 -->
+    <item><title>Success is how high you bounce when you hit bottom.</title><description>— George S. Patton</description></item>
+
+    <!-- 71 -->
+    <item><title>The price of greatness is responsibility.</title><description>— Winston Churchill</description></item>
+    <!-- 72 -->
+    <item><title>Do one thing every day that scares you.</title><description>— Eleanor Roosevelt</description></item>
+    <!-- 73 -->
+    <item><title>Success demands singleness of purpose.</title><description>— Vince Lombardi</description></item>
+    <!-- 74 -->
+    <item><title>Winning is a habit.</title><description>— Vince Lombardi</description></item>
+    <!-- 75 -->
+    <item><title>Suffer now and live the rest of your life a champion.</title><description>— Muhammad Ali</description></item>
+
+    <!-- 76 -->
+    <item><title>Champions keep playing until they get it right.</title><description>— Billie Jean King</description></item>
+    <!-- 77 -->
+    <item><title>Discipline is choosing between what you want now and what you want most.</title><description>— Abraham Lincoln</description></item>
+    <!-- 78 -->
+    <item><title>The best time to plant a tree was twenty years ago. The second best time is now.</title><description>— Chinese Proverb</description></item>
+    <!-- 79 -->
+    <item><title>Consistency beats motivation.</title><description>— Unknown</description></item>
+    <!-- 80 -->
+    <item><title>Progress is built daily.</title><description>— Unknown</description></item>
+
+    <!-- 81 -->
+    <item><title>Do the boring work every day.</title><description>— Unknown</description></item>
+    <!-- 82 -->
+    <item><title>Small progress compounds.</title><description>— Unknown</description></item>
+    <!-- 83 -->
+    <item><title>Discipline builds freedom.</title><description>— Unknown</description></item>
+    <!-- 84 -->
+    <item><title>Win the day.</title><description>— Unknown</description></item>
+    <!-- 85 -->
+    <item><title>Excellence is not a skill. It is an attitude.</title><description>— Ralph Marston</description></item>
+
+    <!-- 86 -->
+    <item><title>First say to yourself what you would be; then do what you have to do.</title><description>— Epictetus</description></item>
+    <!-- 87 -->
+    <item><title>Do not explain your philosophy. Embody it.</title><description>— Epictetus</description></item>
+    <!-- 88 -->
+    <item><title>Man is affected not by events, but by the view he takes of them.</title><description>— Epictetus</description></item>
+    <!-- 89 -->
+    <item><title>The successful warrior is the average man with laser focus.</title><description>— Bruce Lee</description></item>
+    <!-- 90 -->
+    <item><title>Long-term consistency beats short-term intensity.</title><description>— Bruce Lee</description></item>
+
+    <!-- 91 -->
+    <item><title>Without commitment, you’ll never start.</title><description>— Zig Ziglar</description></item>
+    <!-- 92 -->
+    <item><title>The secret to your success is found in your daily routine.</title><description>— John C. Maxwell</description></item>
+    <!-- 93 -->
+    <item><title>Small disciplines repeated lead to great achievements.</title><description>— Jim Rohn</description></item>
+    <!-- 94 -->
+    <item><title>Do the simple things well.</title><description>— Jim Collins</description></item>
+    <!-- 95 -->
+    <item><title>Work hard in silence. Let success make the noise.</title><description>— Frank Ocean</description></item>
+
+    <!-- 96 -->
+    <item><title>The pain of discipline is less than the pain of regret.</title><description>— Sarah Bombell</description></item>
+    <!-- 97 -->
+    <item><title>Do something today your future self will thank you for.</title><description>— Sean Patrick Flanery</description></item>
+    <!-- 98 -->
+    <item><title>Focus is the gateway to all thinking.</title><description>— Daniel Goleman</description></item>
+    <!-- 99 -->
+    <item><title>What you tolerate becomes your standard.</title><description>— Tony Robbins</description></item>
+    <!-- 100 -->
+    <item><title>Finish what you start.</title><description>— Unknown</description></item>
+        <!-- 101 -->
+    <item><title>Excellence is doing ordinary things extraordinarily well.</title><description>— Booker T. Washington</description></item>
+    <!-- 102 -->
+    <item><title>Success is the result of preparation, hard work, and learning from failure.</title><description>— Colin Powell</description></item>
+    <!-- 103 -->
+    <item><title>What you do every day matters more than what you do once in a while.</title><description>— Gretchen Rubin</description></item>
+    <!-- 104 -->
+    <item><title>Action is the foundational key to all success.</title><description>— Pablo Picasso</description></item>
+    <!-- 105 -->
+    <item><title>Do not wait to strike till the iron is hot; make it hot by striking.</title><description>— William Butler Yeats</description></item>
+
+    <!-- 106 -->
+    <item><title>The man who moves a mountain begins by carrying away small stones.</title><description>— Confucius</description></item>
+    <!-- 107 -->
+    <item><title>It is not the mountain we conquer, but ourselves.</title><description>— Edmund Hillary</description></item>
+    <!-- 108 -->
+    <item><title>Success is peace of mind.</title><description>— John Wooden</description></item>
+    <!-- 109 -->
+    <item><title>You are what you do, not what you say you’ll do.</title><description>— Carl Jung</description></item>
+    <!-- 110 -->
+    <item><title>Progress is impossible without change.</title><description>— George Bernard Shaw</description></item>
+
+    <!-- 111 -->
+    <item><title>Action expresses priorities.</title><description>— Mahatma Gandhi</description></item>
+    <!-- 112 -->
+    <item><title>Excellence is the gradual result of always striving to do better.</title><description>— Pat Riley</description></item>
+    <!-- 113 -->
+    <item><title>Hard work beats talent when talent doesn’t work hard.</title><description>— Tim Notke</description></item>
+    <!-- 114 -->
+    <item><title>You don’t get what you wish for. You get what you work for.</title><description>— Daniel Milstein</description></item>
+    <!-- 115 -->
+    <item><title>Never confuse movement with action.</title><description>— Ernest Hemingway</description></item>
+
+    <!-- 116 -->
+    <item><title>Live as if you were to die tomorrow. Learn as if you were to live forever.</title><description>— Mahatma Gandhi</description></item>
+    <!-- 117 -->
+    <item><title>Without hustle, talent will only carry you so far.</title><description>— Gary Vaynerchuk</description></item>
+    <!-- 118 -->
+    <item><title>Ideas are cheap. Execution is everything.</title><description>— Gary Vaynerchuk</description></item>
+    <!-- 119 -->
+    <item><title>Comfort is the enemy of growth.</title><description>— Robin Sharma</description></item>
+    <!-- 120 -->
+    <item><title>Success is created daily.</title><description>— Unknown</description></item>
+
+    <!-- 121 -->
+    <item><title>Small daily improvements lead to massive results.</title><description>— Unknown</description></item>
+    <!-- 122 -->
+    <item><title>Long-term consistency beats short-term intensity.</title><description>— Bruce Lee</description></item>
+    <!-- 123 -->
+    <item><title>One day or day one. You decide.</title><description>— Unknown</description></item>
+    <!-- 124 -->
+    <item><title>Do the work. Everyone else is tired too.</title><description>— Unknown</description></item>
+    <!-- 125 -->
+    <item><title>Make discipline your competitive advantage.</title><description>— Unknown</description></item>
+
+    <!-- 126 -->
+    <item><title>Success is never owned. It is rented, and the rent is due every day.</title><description>— Rory Vaden</description></item>
+    <!-- 127 -->
+    <item><title>We become what we think about.</title><description>— Earl Nightingale</description></item>
+    <!-- 128 -->
+    <item><title>Don’t wait. The time will never be just right.</title><description>— Napoleon Hill</description></item>
+    <!-- 129 -->
+    <item><title>Strength does not come from physical capacity. It comes from an indomitable will.</title><description>— Mahatma Gandhi</description></item>
+    <!-- 130 -->
+    <item><title>You will never change your life until you change something you do daily.</title><description>— John C. Maxwell</description></item>
+
+    <!-- 131 -->
+    <item><title>The difference between ordinary and extraordinary is that little extra.</title><description>— Jimmy Johnson</description></item>
+    <!-- 132 -->
+    <item><title>Success is doing the right things repeatedly.</title><description>— Unknown</description></item>
+    <!-- 133 -->
+    <item><title>Momentum favors the disciplined.</title><description>— Unknown</description></item>
+    <!-- 134 -->
+    <item><title>Do not drift. Decide.</title><description>— Tony Robbins</description></item>
+    <!-- 135 -->
+    <item><title>Habits decide the future.</title><description>— Unknown</description></item>
+
+    <!-- 136 -->
+    <item><title>What you repeat, you reinforce.</title><description>— Unknown</description></item>
+    <!-- 137 -->
+    <item><title>Discipline is remembering what you want.</title><description>— David Campbell</description></item>
+    <!-- 138 -->
+    <item><title>Master the art of showing up.</title><description>— Unknown</description></item>
+    <!-- 139 -->
+    <item><title>Repetition creates mastery.</title><description>— Unknown</description></item>
+    <!-- 140 -->
+    <item><title>Success is found in the daily grind.</title><description>— Unknown</description></item>
+
+    <!-- 141 -->
+    <item><title>Clarity comes from action.</title><description>— Marie Forleo</description></item>
+    <!-- 142 -->
+    <item><title>Show up daily.</title><description>— Unknown</description></item>
+    <!-- 143 -->
+    <item><title>Success compounds.</title><description>— Unknown</description></item>
+    <!-- 144 -->
+    <item><title>Finish strong.</title><description>— Unknown</description></item>
+    <!-- 145 -->
+    <item><title>Discipline turns goals into reality.</title><description>— Unknown</description></item>
+
+    <!-- 146 -->
+    <item><title>Focus on the step in front of you.</title><description>— Unknown</description></item>
+    <!-- 147 -->
+    <item><title>Consistency is what transforms average into excellence.</title><description>— Unknown</description></item>
+    <!-- 148 -->
+    <item><title>Success is the product of daily habits.</title><description>— James Clear</description></item>
+    <!-- 149 -->
+    <item><title>Make progress, not excuses.</title><description>— Unknown</description></item>
+    <!-- 150 -->
+    <item><title>Discipline builds momentum.</title><description>— Unknown</description></item>
+
+    <!-- 151 -->
+    <item><title>What you practice grows stronger.</title><description>— Epictetus</description></item>
+    <!-- 152 -->
+    <item><title>First say to yourself what you would be; then do what you have to do.</title><description>— Epictetus</description></item>
+    <!-- 153 -->
+    <item><title>Do not explain your philosophy. Embody it.</title><description>— Epictetus</description></item>
+    <!-- 154 -->
+    <item><title>He who conquers himself is the mightiest warrior.</title><description>— Confucius</description></item>
+    <!-- 155 -->
+    <item><title>The successful warrior is the average man with laser focus.</title><description>— Bruce Lee</description></item>
+
+    <!-- 156 -->
+    <item><title>Without commitment, you’ll never start.</title><description>— Zig Ziglar</description></item>
+    <!-- 157 -->
+    <item><title>The secret to your success is found in your daily routine.</title><description>— John C. Maxwell</description></item>
+    <!-- 158 -->
+    <item><title>Small disciplines repeated lead to great achievements.</title><description>— Jim Rohn</description></item>
+    <!-- 159 -->
+    <item><title>Do the simple things well.</title><description>— Jim Collins</description></item>
+    <!-- 160 -->
+    <item><title>Work builds confidence.</title><description>— Unknown</description></item>
+
+    <!-- 161 -->
+    <item><title>The pain of discipline is less than the pain of regret.</title><description>— Sarah Bombell</description></item>
+    <!-- 162 -->
+    <item><title>Do something today your future self will thank you for.</title><description>— Sean Patrick Flanery</description></item>
+    <!-- 163 -->
+    <item><title>Focus is the gateway to all thinking.</title><description>— Daniel Goleman</description></item>
+    <!-- 164 -->
+    <item><title>What you tolerate becomes your standard.</title><description>— Tony Robbins</description></item>
+    <!-- 165 -->
+    <item><title>Make today count.</title><description>— Unknown</description></item>
+
+    <!-- 166 -->
+    <item><title>Success rewards consistency.</title><description>— Unknown</description></item>
+    <!-- 167 -->
+    <item><title>Discipline drives results.</title><description>— Unknown</description></item>
+    <!-- 168 -->
+    <item><title>Daily effort compounds.</title><description>— Unknown</description></item>
+    <!-- 169 -->
+    <item><title>Build momentum every day.</title><description>— Unknown</description></item>
+    <!-- 170 -->
+    <item><title>Progress loves patience.</title><description>— Unknown</description></item>
+
+    <!-- 171 -->
+    <item><title>Work first, motivation follows.</title><description>— Unknown</description></item>
+    <!-- 172 -->
+    <item><title>Be consistent, not perfect.</title><description>— Unknown</description></item>
+    <!-- 173 -->
+    <item><title>Success is earned daily.</title><description>— Unknown</description></item>
+    <!-- 174 -->
+    <item><title>Effort builds identity.</title><description>— Unknown</description></item>
+    <!-- 175 -->
+    <item><title>Choose progress today.</title><description>— Unknown</description></item>
+
+    <!-- 176 -->
+    <item><title>Discipline is a form of self-respect.</title><description>— Unknown</description></item>
+    <!-- 177 -->
+    <item><title>Focus creates freedom.</title><description>— Unknown</description></item>
+    <!-- 178 -->
+    <item><title>Hard things build strong people.</title><description>— Unknown</description></item>
+    <!-- 179 -->
+    <item><title>Progress is predictable.</title><description>— Unknown</description></item>
+    <!-- 180 -->
+    <item><title>Do the next right thing.</title><description>— Unknown</description></item>
+
+    <!-- 181 -->
+    <item><title>Daily action compounds over time.</title><description>— Unknown</description></item>
+    <!-- 182 -->
+    <item><title>Momentum is built, not found.</title><description>— Unknown</description></item>
+    <!-- 183 -->
+    <item><title>Consistency creates confidence.</title><description>— Unknown</description></item>
+    <!-- 184 -->
+    <item><title>Effort beats excuses.</title><description>— Unknown</description></item>
+    <!-- 185 -->
+    <item><title>Make effort automatic.</title><description>— Unknown</description></item>
+
+    <!-- 186 -->
+    <item><title>Reps create results.</title><description>— Unknown</description></item>
+    <!-- 187 -->
+    <item><title>One task at a time.</title><description>— Unknown</description></item>
+    <!-- 188 -->
+    <item><title>Discipline outlasts motivation.</title><description>— Unknown</description></item>
+    <!-- 189 -->
+    <item><title>Focus sharpens results.</title><description>— Unknown</description></item>
+    <!-- 190 -->
+    <item><title>Earn your confidence.</title><description>— Unknown</description></item>
+
+    <!-- 191 -->
+    <item><title>Habits shape destiny.</title><description>— Unknown</description></item>
+    <!-- 192 -->
+    <item><title>Work quietly. Results make noise.</title><description>— Unknown</description></item>
+    <!-- 193 -->
+    <item><title>Build first, polish later.</title><description>— Unknown</description></item>
+    <!-- 194 -->
+    <item><title>Execution beats ideas.</title><description>— Unknown</description></item>
+    <!-- 195 -->
+    <item><title>Clarity comes from movement.</title><description>— Unknown</description></item>
+
+    <!-- 196 -->
+    <item><title>Be patient but relentless.</title><description>— Unknown</description></item>
+    <!-- 197 -->
+    <item><title>Daily discipline pays.</title><description>— Unknown</description></item>
+    <!-- 198 -->
+    <item><title>Consistency creates momentum.</title><description>— Unknown</description></item>
+    <!-- 199 -->
+    <item><title>Process over outcome.</title><description>— Unknown</description></item>
+    <!-- 200 -->
+    <item><title>Show up with intention.</title><description>— Unknown</description></item>
+    <!-- 201 -->
+    <item><title>Excellence is not an act, it is a habit.</title><description>— Aristotle</description></item>
+    <!-- 202 -->
+    <item><title>Knowing yourself is the beginning of all wisdom.</title><description>— Aristotle</description></item>
+    <!-- 203 -->
+    <item><title>Happiness depends upon ourselves.</title><description>— Aristotle</description></item>
+    <!-- 204 -->
+    <item><title>Nature does not hurry, yet everything is accomplished.</title><description>— Lao Tzu</description></item>
+    <!-- 205 -->
+    <item><title>At the center of your being you have the answer.</title><description>— Lao Tzu</description></item>
+
+    <!-- 206 -->
+    <item><title>If it is not right, do not do it.</title><description>— Marcus Aurelius</description></item>
+    <!-- 207 -->
+    <item><title>The impediment to action advances action.</title><description>— Marcus Aurelius</description></item>
+    <!-- 208 -->
+    <item><title>Begin the morning by saying, I shall meet busybody, ingrate, arrogant.</title><description>— Marcus Aurelius</description></item>
+    <!-- 209 -->
+    <item><title>He who fears death will never do anything worthy of a living man.</title><description>— Seneca</description></item>
+    <!-- 210 -->
+    <item><title>Difficulties strengthen the mind, as labor does the body.</title><description>— Seneca</description></item>
+
+    <!-- 211 -->
+    <item><title>The future belongs to those who prepare for it today.</title><description>— Malcolm X</description></item>
+    <!-- 212 -->
+    <item><title>Do not pray for easy lives. Pray to be stronger men.</title><description>— John F. Kennedy</description></item>
+    <!-- 213 -->
+    <item><title>In the middle of every difficulty lies opportunity.</title><description>— Albert Einstein</description></item>
+    <!-- 214 -->
+    <item><title>Try not to become a man of success, but of value.</title><description>— Albert Einstein</description></item>
+    <!-- 215 -->
+    <item><title>The best way to predict the future is to invent it.</title><description>— Alan Kay</description></item>
+
+    <!-- 216 -->
+    <item><title>Quality means doing it right when no one is looking.</title><description>— Henry Ford</description></item>
+    <!-- 217 -->
+    <item><title>Whether you think you can or you think you can’t, you’re right.</title><description>— Henry Ford</description></item>
+    <!-- 218 -->
+    <item><title>The man who does more than he is paid for will soon be paid for more than he does.</title><description>— Napoleon Hill</description></item>
+    <!-- 219 -->
+    <item><title>Patience, persistence and perspiration make an unbeatable combination.</title><description>— Napoleon Hill</description></item>
+    <!-- 220 -->
+    <item><title>Opportunity is missed by most people because it is dressed in overalls.</title><description>— Thomas Edison</description></item>
+
+    <!-- 221 -->
+    <item><title>Genius is one percent inspiration and ninety-nine percent perspiration.</title><description>— Thomas Edison</description></item>
+    <!-- 222 -->
+    <item><title>The successful person is the one who can build a firm foundation.</title><description>— David Brinkley</description></item>
+    <!-- 223 -->
+    <item><title>You don’t learn to walk by following rules.</title><description>— Richard Branson</description></item>
+    <!-- 224 -->
+    <item><title>Business opportunities are like buses.</title><description>— Richard Branson</description></item>
+    <!-- 225 -->
+    <item><title>If you are not embarrassed by the first version, you shipped too late.</title><description>— Reid Hoffman</description></item>
+
+    <!-- 226 -->
+    <item><title>Startups don’t starve. They drown.</title><description>— Paul Graham</description></item>
+    <!-- 227 -->
+    <item><title>Move fast and break things.</title><description>— Mark Zuckerberg</description></item>
+    <!-- 228 -->
+    <item><title>Ideas are easy. Implementation is hard.</title><description>— Guy Kawasaki</description></item>
+    <!-- 229 -->
+    <item><title>Great companies are built on great products.</title><description>— Elon Musk</description></item>
+    <!-- 230 -->
+    <item><title>You should take the approach that you’re wrong.</title><description>— Elon Musk</description></item>
+
+    <!-- 231 -->
+    <item><title>Seek wealth, not money or status.</title><description>— Naval Ravikant</description></item>
+    <!-- 232 -->
+    <item><title>Learn to sell. Learn to build.</title><description>— Naval Ravikant</description></item>
+    <!-- 233 -->
+    <item><title>Reading is faster than listening.</title><description>— Naval Ravikant</description></item>
+    <!-- 234 -->
+    <item><title>The most important skill is knowing how to learn.</title><description>— Naval Ravikant</description></item>
+    <!-- 235 -->
+    <item><title>Escape competition through authenticity.</title><description>— Naval Ravikant</description></item>
+
+    <!-- 236 -->
+    <item><title>Perseverance is failing nineteen times and succeeding the twentieth.</title><description>— Julie Andrews</description></item>
+    <!-- 237 -->
+    <item><title>Don’t be afraid to give up the good to go for the great.</title><description>— John D. Rockefeller</description></item>
+    <!-- 238 -->
+    <item><title>Success is walking from failure to failure with no loss of enthusiasm.</title><description>— Winston Churchill</description></item>
+    <!-- 239 -->
+    <item><title>To improve is to change.</title><description>— Winston Churchill</description></item>
+    <!-- 240 -->
+    <item><title>We make a living by what we get, but a life by what we give.</title><description>— Winston Churchill</description></item>
+
+    <!-- 241 -->
+    <item><title>Do not go where the path may lead.</title><description>— Ralph Waldo Emerson</description></item>
+    <!-- 242 -->
+    <item><title>What lies behind us and before us are tiny matters.</title><description>— Ralph Waldo Emerson</description></item>
+    <!-- 243 -->
+    <item><title>The only person you are destined to become is the person you decide to be.</title><description>— Ralph Waldo Emerson</description></item>
+    <!-- 244 -->
+    <item><title>Nothing great was ever achieved without enthusiasm.</title><description>— Ralph Waldo Emerson</description></item>
+    <!-- 245 -->
+    <item><title>To be yourself in a world that is trying to make you something else is courage.</title><description>— Ralph Waldo Emerson</description></item>
+
+    <!-- 246 -->
+    <item><title>Believe you can and you’re halfway there.</title><description>— Theodore Roosevelt</description></item>
+    <!-- 247 -->
+    <item><title>Far and away the best prize that life offers is the chance to work hard.</title><description>— Theodore Roosevelt</description></item>
+    <!-- 248 -->
+    <item><title>Keep your eyes on the stars and your feet on the ground.</title><description>— Theodore Roosevelt</description></item>
+    <!-- 249 -->
+    <item><title>Do what you feel in your heart to be right.</title><description>— Eleanor Roosevelt</description></item>
+    <!-- 250 -->
+    <item><title>No one can make you feel inferior without your consent.</title><description>— Eleanor Roosevelt</description></item>
+
+    <!-- 251 -->
+    <item><title>What we think, we become.</title><description>— Buddha</description></item>
+    <!-- 252 -->
+    <item><title>Peace comes from within.</title><description>— Buddha</description></item>
+    <!-- 253 -->
+    <item><title>The mind is everything.</title><description>— Buddha</description></item>
+    <!-- 254 -->
+    <item><title>Three things cannot be long hidden: the sun, the moon, and the truth.</title><description>— Buddha</description></item>
+    <!-- 255 -->
+    <item><title>Better than a thousand hollow words is one word that brings peace.</title><description>— Buddha</description></item>
+
+    <!-- 256 -->
+    <item><title>The best fighter is never angry.</title><description>— Lao Tzu</description></item>
+    <!-- 257 -->
+    <item><title>Silence is a source of great strength.</title><description>— Lao Tzu</description></item>
+    <!-- 258 -->
+    <item><title>Mastering others is strength. Mastering yourself is true power.</title><description>— Lao Tzu</description></item>
+    <!-- 259 -->
+    <item><title>Knowing others is intelligence; knowing yourself is wisdom.</title><description>— Lao Tzu</description></item>
+    <!-- 260 -->
+    <item><title>He who knows he has enough is rich.</title><description>— Lao Tzu</description></item>
+
+    <!-- 261 -->
+    <item><title>Do not let what you cannot do interfere with what you can do.</title><description>— John Wooden</description></item>
+    <!-- 262 -->
+    <item><title>Success is never accidental.</title><description>— Jack Dorsey</description></item>
+    <!-- 263 -->
+    <item><title>Make every detail perfect.</title><description>— Jack Dorsey</description></item>
+    <!-- 264 -->
+    <item><title>Risk more than others think is safe.</title><description>— Howard Schultz</description></item>
+    <!-- 265 -->
+    <item><title>Dreams don’t work unless you do.</title><description>— John C. Maxwell</description></item>
+
+    <!-- 266 -->
+    <item><title>The best investment you can make is in yourself.</title><description>— Warren Buffett</description></item>
+    <!-- 267 -->
+    <item><title>Risk comes from not knowing what you’re doing.</title><description>— Warren Buffett</description></item>
+    <!-- 268 -->
+    <item><title>Honesty is a very expensive gift.</title><description>— Warren Buffett</description></item>
+    <!-- 269 -->
+    <item><title>Chains of habit are too light to be felt until they are too heavy to be broken.</title><description>— Warren Buffett</description></item>
+    <!-- 270 -->
+    <item><title>Someone is sitting in the shade today because someone planted a tree long ago.</title><description>— Warren Buffett</description></item>
+
+    <!-- 271 -->
+    <item><title>Learn to think independently.</title><description>— Charlie Munger</description></item>
+    <!-- 272 -->
+    <item><title>Spend each day trying to be a little wiser.</title><description>— Charlie Munger</description></item>
+    <!-- 273 -->
+    <item><title>Knowing what you don’t know is more useful.</title><description>— Charlie Munger</description></item>
+    <!-- 274 -->
+    <item><title>Take a simple idea and take it seriously.</title><description>— Charlie Munger</description></item>
+    <!-- 275 -->
+    <item><title>The first rule is preparation.</title><description>— Charlie Munger</description></item>
+
+    <!-- 276 -->
+    <item><title>You have to do your own thinking.</title><description>— Ray Dalio</description></item>
+    <!-- 277 -->
+    <item><title>Pain plus reflection equals progress.</title><description>— Ray Dalio</description></item>
+    <!-- 278 -->
+    <item><title>Embrace reality and deal with it.</title><description>— Ray Dalio</description></item>
+    <!-- 279 -->
+    <item><title>Don’t confuse goals with desires.</title><description>— Ray Dalio</description></item>
+    <!-- 280 -->
+    <item><title>Great people are willing to be bad at first.</title><description>— Ray Dalio</description></item>
+
+    <!-- 281 -->
+    <item><title>Success is a lousy teacher.</title><description>— Bill Gates</description></item>
+    <!-- 282 -->
+    <item><title>Your most unhappy customers are your greatest source of learning.</title><description>— Bill Gates</description></item>
+    <!-- 283 -->
+    <item><title>Life is not fair; get used to it.</title><description>— Bill Gates</description></item>
+    <!-- 284 -->
+    <item><title>If you are born poor it’s not your mistake.</title><description>— Bill Gates</description></item>
+    <!-- 285 -->
+    <item><title>We all need people who give us feedback.</title><description>— Bill Gates</description></item>
+
+    <!-- 286 -->
+    <item><title>Never doubt that a small group of thoughtful people can change the world.</title><description>— Margaret Mead</description></item>
+    <!-- 287 -->
+    <item><title>Well done is better than well said.</title><description>— Benjamin Franklin</description></item>
+    <!-- 288 -->
+    <item><title>An investment in knowledge pays the best interest.</title><description>— Benjamin Franklin</description></item>
+    <!-- 289 -->
+    <item><title>Either write something worth reading or do something worth writing.</title><description>— Benjamin Franklin</description></item>
+    <!-- 290 -->
+    <item><title>Lost time is never found again.</title><description>— Benjamin Franklin</description></item>
+
+    <!-- 291 -->
+    <item><title>Be yourself; everyone else is already taken.</title><description>— Oscar Wilde</description></item>
+    <!-- 292 -->
+    <item><title>Experience is simply the name we give our mistakes.</title><description>— Oscar Wilde</description></item>
+    <!-- 293 -->
+    <item><title>To live is the rarest thing in the world.</title><description>— Oscar Wilde</description></item>
+    <!-- 294 -->
+    <item><title>Always forgive your enemies.</title><description>— Oscar Wilde</description></item>
+    <!-- 295 -->
+    <item><title>Nothing succeeds like excess.</title><description>— Oscar Wilde</description></item>
+
+    <!-- 296 -->
+    <item><title>Do not take life too seriously.</title><description>— Elbert Hubbard</description></item>
+    <!-- 297 -->
+    <item><title>To avoid criticism, do nothing.</title><description>— Elbert Hubbard</description></item>
+    <!-- 298 -->
+    <item><title>One machine can do the work of fifty men.</title><description>— Elbert Hubbard</description></item>
+    <!-- 299 -->
+    <item><title>Strength grows in the moments when you think you can’t go on.</title><description>— Unknown</description></item>
+    <!-- 300 -->
+    <item><title>Every accomplishment starts with the decision to try.</title><description>— Unknown</description></item>
+    <!-- 301 -->
+    <item><title>Do the best you can with what you have.</title><description>— Theodore Roosevelt</description></item>
+    <!-- 302 -->
+    <item><title>Success is getting what you want.</title><description>— Dale Carnegie</description></item>
+    <!-- 303 -->
+    <item><title>Happiness is wanting what you get.</title><description>— Dale Carnegie</description></item>
+    <!-- 304 -->
+    <item><title>Our lives begin to end the day we become silent.</title><description>— Martin Luther King Jr.</description></item>
+    <!-- 305 -->
+    <item><title>Faith is taking the first step even when you don’t see the staircase.</title><description>— Martin Luther King Jr.</description></item>
+
+    <!-- 306 -->
+    <item><title>Do what is right, not what is easy.</title><description>— Roy T. Bennett</description></item>
+    <!-- 307 -->
+    <item><title>Never give up on a dream just because of time.</title><description>— Earl Nightingale</description></item>
+    <!-- 308 -->
+    <item><title>Success is the progressive realization of a worthy goal.</title><description>— Earl Nightingale</description></item>
+    <!-- 309 -->
+    <item><title>You don’t have to see the whole staircase.</title><description>— Martin Luther King Jr.</description></item>
+    <!-- 310 -->
+    <item><title>Luck favors the prepared.</title><description>— Louis Pasteur</description></item>
+
+    <!-- 311 -->
+    <item><title>The harder the conflict, the greater the triumph.</title><description>— George Washington</description></item>
+    <!-- 312 -->
+    <item><title>To improve is to change.</title><description>— Winston Churchill</description></item>
+    <!-- 313 -->
+    <item><title>If you’re going through hell, keep going.</title><description>— Winston Churchill</description></item>
+    <!-- 314 -->
+    <item><title>Don’t watch the clock; do what it does.</title><description>— Sam Levenson</description></item>
+    <!-- 315 -->
+    <item><title>It is never too late to be what you might have been.</title><description>— George Eliot</description></item>
+
+    <!-- 316 -->
+    <item><title>We do not remember days, we remember moments.</title><description>— Cesare Pavese</description></item>
+    <!-- 317 -->
+    <item><title>Nothing will work unless you do.</title><description>— Maya Angelou</description></item>
+    <!-- 318 -->
+    <item><title>Try to learn something about everything.</title><description>— Thomas Huxley</description></item>
+    <!-- 319 -->
+    <item><title>Success is not in what you have.</title><description>— Bo Bennett</description></item>
+    <!-- 320 -->
+    <item><title>The man who has confidence gains the confidence of others.</title><description>— Hasidic Proverb</description></item>
+
+    <!-- 321 -->
+    <item><title>It takes courage to grow up and become who you really are.</title><description>— E. E. Cummings</description></item>
+    <!-- 322 -->
+    <item><title>Begin anywhere.</title><description>— John Cage</description></item>
+    <!-- 323 -->
+    <item><title>You are never too old to set another goal.</title><description>— C. S. Lewis</description></item>
+    <!-- 324 -->
+    <item><title>Act as if it were impossible to fail.</title><description>— Dorothea Brande</description></item>
+    <!-- 325 -->
+    <item><title>What we achieve inwardly will change outer reality.</title><description>— Plutarch</description></item>
+
+    <!-- 326 -->
+    <item><title>He who has a why can endure almost any how.</title><description>— Friedrich Nietzsche</description></item>
+    <!-- 327 -->
+    <item><title>Success is the ability to go from failure to failure.</title><description>— Winston Churchill</description></item>
+    <!-- 328 -->
+    <item><title>Fortune favors the bold.</title><description>— Virgil</description></item>
+    <!-- 329 -->
+    <item><title>What you do speaks so loudly I cannot hear you.</title><description>— Ralph Waldo Emerson</description></item>
+    <!-- 330 -->
+    <item><title>Life is really simple, but we insist on making it complicated.</title><description>— Confucius</description></item>
+
+    <!-- 331 -->
+    <item><title>The best preparation for tomorrow is doing your best today.</title><description>— H. Jackson Brown Jr.</description></item>
+    <!-- 332 -->
+    <item><title>Success is liking yourself.</title><description>— Maya Angelou</description></item>
+    <!-- 333 -->
+    <item><title>Where there is no vision, there is no hope.</title><description>— George Washington Carver</description></item>
+    <!-- 334 -->
+    <item><title>The mind is everything. What you think you become.</title><description>— Buddha</description></item>
+    <!-- 335 -->
+    <item><title>Act without expectation.</title><description>— Lao Tzu</description></item>
+
+    <!-- 336 -->
+    <item><title>Small opportunities are often the beginning of great enterprises.</title><description>— Demosthenes</description></item>
+    <!-- 337 -->
+    <item><title>Work joyfully and peacefully.</title><description>— Pope John XXIII</description></item>
+    <!-- 338 -->
+    <item><title>Learning never exhausts the mind.</title><description>— Leonardo da Vinci</description></item>
+    <!-- 339 -->
+    <item><title>He who learns but does not think is lost.</title><description>— Confucius</description></item>
+    <!-- 340 -->
+    <item><title>The future belongs to those who believe.</title><description>— Eleanor Roosevelt</description></item>
+
+    <!-- 341 -->
+    <item><title>Nothing great was ever achieved without enthusiasm.</title><description>— Ralph Waldo Emerson</description></item>
+    <!-- 342 -->
+    <item><title>Well begun is half done.</title><description>— Aristotle</description></item>
+    <!-- 343 -->
+    <item><title>Turn your wounds into wisdom.</title><description>— Oprah Winfrey</description></item>
+    <!-- 344 -->
+    <item><title>Success is preparation meeting opportunity.</title><description>— Bobby Unser</description></item>
+    <!-- 345 -->
+    <item><title>The harder you work, the harder it is to surrender.</title><description>— Vince Lombardi</description></item>
+
+    <!-- 346 -->
+    <item><title>You cannot escape the responsibility of tomorrow.</title><description>— Abraham Lincoln</description></item>
+    <!-- 347 -->
+    <item><title>Everything you can imagine is real.</title><description>— Pablo Picasso</description></item>
+    <!-- 348 -->
+    <item><title>Dream big and dare to fail.</title><description>— Norman Vaughan</description></item>
+    <!-- 349 -->
+    <item><title>The only journey is the one within.</title><description>— Rainer Maria Rilke</description></item>
+    <!-- 350 -->
+    <item><title>Success is a journey, not a destination.</title><description>— Arthur Ashe</description></item>
+
+    <!-- 351 -->
+    <item><title>To live is the rarest thing in the world.</title><description>— Oscar Wilde</description></item>
+    <!-- 352 -->
+    <item><title>Experience is the teacher of all things.</title><description>— Julius Caesar</description></item>
+    <!-- 353 -->
+    <item><title>What we fear doing most is usually what we most need to do.</title><description>— Tim Ferriss</description></item>
+    <!-- 354 -->
+    <item><title>Act as if what you do makes a difference.</title><description>— William James</description></item>
+    <!-- 355 -->
+    <item><title>Success is not measured by position.</title><description>— Booker T. Washington</description></item>
+
+    <!-- 356 -->
+    <item><title>Great acts are made up of small deeds.</title><description>— Lao Tzu</description></item>
+    <!-- 357 -->
+    <item><title>We become what we repeatedly do.</title><description>— Aristotle</description></item>
+    <!-- 358 -->
+    <item><title>The secret of getting ahead is getting started.</title><description>— Mark Twain</description></item>
+    <!-- 359 -->
+    <item><title>Action cures fear.</title><description>— David J. Schwartz</description></item>
+    <!-- 360 -->
+    <item><title>Start before you’re ready.</title><description>— Steven Pressfield</description></item>
+
+    <!-- 361 -->
+    <item><title>Do the work.</title><description>— Steven Pressfield</description></item>
+    <!-- 362 -->
+    <item><title>Persistence guarantees that results are inevitable.</title><description>— Paramahansa Yogananda</description></item>
+    <!-- 363 -->
+    <item><title>Nothing will stop you if you keep moving.</title><description>— Unknown</description></item>
+    <!-- 364 -->
+    <item><title>Success comes from consistent effort.</title><description>— Unknown</description></item>
+    <!-- 365 -->
+    <item><title>Today is the day.</title><description>— Unknown</description></item>
 
   </channel>
 </rss>
+
