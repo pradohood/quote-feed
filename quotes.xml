@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Quote of the Day</title>
+    <description>Daily mindset and motivation quotes</description>
+    <link>https://pradohood.github.io/quote-feed/</link>
+
+    <item>
+      <title>We are what we repeatedly do.</title>
+      <description>— Aristotle</description>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>Stay hungry. Stay foolish.</title>
+      <description>— Steve Jobs</description>
+      <pubDate>Tue, 02 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+
+  </channel>
+</rss>
