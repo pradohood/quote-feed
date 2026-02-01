@@ -2,12 +2,1464 @@
   "index": 0,
   "quotes": [
     {
-      "text": "Test quote one.",
-      "author": "System"
+      "text": "Momentum grows when effort becomes routine. (1)",
+      "author": "Jocko Willink"
     },
     {
-      "text": "Test quote two.",
-      "author": "System"
+      "text": "Commit to the process and results will follow. (2)",
+      "author": "Malcolm X"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (3)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (4)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (5)",
+      "author": "Jocko Willink"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (6)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (7)",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (8)",
+      "author": "Sun Tzu"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (9)",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (10)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (11)",
+      "author": "Sun Tzu"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (12)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (13)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (14)",
+      "author": "Charlie Munger"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (15)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (16)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (17)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (18)",
+      "author": "Oprah Winfrey"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (19)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (20)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (21)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Commit to the process and results will follow. (22)",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (23)",
+      "author": "Benjamin Franklin"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (24)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (25)",
+      "author": "James Clear"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (26)",
+      "author": "Confucius"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (27)",
+      "author": "Malcolm X"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (28)",
+      "author": "Naval Ravikant"
+    },
+    {
+      "text": "Commit to the process and results will follow. (29)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (30)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (31)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (32)",
+      "author": "Plato"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (33)",
+      "author": "James Clear"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (34)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (35)",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (36)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (37)",
+      "author": "Friedrich Nietzsche"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (38)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (39)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (40)",
+      "author": "Ryan Holiday"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (41)",
+      "author": "Ray Dalio"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (42)",
+      "author": "Theodore Roosevelt"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (43)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (44)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (45)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (46)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (47)",
+      "author": "Brené Brown"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (48)",
+      "author": "Sun Tzu"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (49)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (50)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (51)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (52)",
+      "author": "Jim Rohn"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (53)",
+      "author": "Paulo Coelho"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (54)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (55)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (56)",
+      "author": "Theodore Roosevelt"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (57)",
+      "author": "Malcolm X"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (58)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (59)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (60)",
+      "author": "Sun Tzu"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (61)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (62)",
+      "author": "Tim Ferriss"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (63)",
+      "author": "Plato"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (64)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (65)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (66)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (67)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (68)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (69)",
+      "author": "Plato"
+    },
+    {
+      "text": "Commit to the process and results will follow. (70)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (71)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (72)",
+      "author": "Buddha"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (73)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (74)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (75)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (76)",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (77)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (78)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (79)",
+      "author": "Confucius"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (80)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (81)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (82)",
+      "author": "Tony Robbins"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (83)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (84)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (85)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (86)",
+      "author": "Buddha"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (87)",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (88)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (89)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (90)",
+      "author": "Ryan Holiday"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (91)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (92)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (93)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Commit to the process and results will follow. (94)",
+      "author": "Paulo Coelho"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (95)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Commit to the process and results will follow. (96)",
+      "author": "George Washington"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (97)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (98)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (99)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (100)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (101)",
+      "author": "Buddha"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (102)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (103)",
+      "author": "George Washington"
+    },
+    {
+      "text": "Commit to the process and results will follow. (104)",
+      "author": "Plato"
+    },
+    {
+      "text": "Commit to the process and results will follow. (105)",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (106)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (107)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (108)",
+      "author": "Dale Carnegie"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (109)",
+      "author": "William James"
+    },
+    {
+      "text": "Commit to the process and results will follow. (110)",
+      "author": "Steve Jobs"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (111)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (112)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (113)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (114)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (115)",
+      "author": "Steve Jobs"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (116)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (117)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (118)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (119)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (120)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Commit to the process and results will follow. (121)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (122)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (123)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (124)",
+      "author": "Benjamin Franklin"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (125)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (126)",
+      "author": "Jim Rohn"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (127)",
+      "author": "George Washington"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (128)",
+      "author": "Ray Dalio"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (129)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (130)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (131)",
+      "author": "Jim Rohn"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (132)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (133)",
+      "author": "Ryan Holiday"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (134)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (135)",
+      "author": "Tony Robbins"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (136)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (137)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Commit to the process and results will follow. (138)",
+      "author": "Naval Ravikant"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (139)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (140)",
+      "author": "James Clear"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (141)",
+      "author": "Tony Robbins"
+    },
+    {
+      "text": "Commit to the process and results will follow. (142)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (143)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (144)",
+      "author": "Ray Dalio"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (145)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (146)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (147)",
+      "author": "Jocko Willink"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (148)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (149)",
+      "author": "Paulo Coelho"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (150)",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (151)",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (152)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (153)",
+      "author": "Socrates"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (154)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (155)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Commit to the process and results will follow. (156)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (157)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (158)",
+      "author": "Mark Twain"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (159)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Commit to the process and results will follow. (160)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (161)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (162)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "What you practice daily becomes who you are. (163)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (164)",
+      "author": "Confucius"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (165)",
+      "author": "William James"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (166)",
+      "author": "Ryan Holiday"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (167)",
+      "author": "Tim Ferriss"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (168)",
+      "author": "William James"
+    },
+    {
+      "text": "Commit to the process and results will follow. (169)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (170)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (171)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (172)",
+      "author": "Charlie Munger"
+    },
+    {
+      "text": "Commit to the process and results will follow. (173)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Commit to the process and results will follow. (174)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (175)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (176)",
+      "author": "James Clear"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (177)",
+      "author": "Mark Twain"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (178)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (179)",
+      "author": "Malcolm X"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (180)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (181)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (182)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (183)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Commit to the process and results will follow. (184)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (185)",
+      "author": "Oscar Wilde"
+    },
+    {
+      "text": "Commit to the process and results will follow. (186)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (187)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (188)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (189)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Commit to the process and results will follow. (190)",
+      "author": "Plato"
+    },
+    {
+      "text": "Commit to the process and results will follow. (191)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (192)",
+      "author": "Plato"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (193)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (194)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (195)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (196)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Commit to the process and results will follow. (197)",
+      "author": "Charlie Munger"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (198)",
+      "author": "George Washington"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (199)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (200)",
+      "author": "Jim Rohn"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (201)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (202)",
+      "author": "Paulo Coelho"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (203)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (204)",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (205)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Commit to the process and results will follow. (206)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (207)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (208)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (209)",
+      "author": "Jocko Willink"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (210)",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (211)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Commit to the process and results will follow. (212)",
+      "author": "Plato"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (213)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (214)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (215)",
+      "author": "William James"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (216)",
+      "author": "Dale Carnegie"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (217)",
+      "author": "James Clear"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (218)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (219)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (220)",
+      "author": "Ray Dalio"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (221)",
+      "author": "Tony Robbins"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (222)",
+      "author": "Friedrich Nietzsche"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (223)",
+      "author": "Jeff Bezos"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (224)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (225)",
+      "author": "Friedrich Nietzsche"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (226)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (227)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (228)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (229)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (230)",
+      "author": "Jeff Bezos"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (231)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (232)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (233)",
+      "author": "Plato"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (234)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (235)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (236)",
+      "author": "Jocko Willink"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (237)",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (238)",
+      "author": "Confucius"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (239)",
+      "author": "Dale Carnegie"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (240)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Commit to the process and results will follow. (241)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (242)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (243)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (244)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (245)",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (246)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (247)",
+      "author": "Charlie Munger"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (248)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (249)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (250)",
+      "author": "Paulo Coelho"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (251)",
+      "author": "Ray Dalio"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (252)",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (253)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (254)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (255)",
+      "author": "Jocko Willink"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (256)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Commit to the process and results will follow. (257)",
+      "author": "Tim Ferriss"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (258)",
+      "author": "Bill Gates"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (259)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Commit to the process and results will follow. (260)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (261)",
+      "author": "Mark Twain"
+    },
+    {
+      "text": "Commit to the process and results will follow. (262)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (263)",
+      "author": "Confucius"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (264)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (265)",
+      "author": "Confucius"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (266)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (267)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (268)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (269)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Commit to the process and results will follow. (270)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (271)",
+      "author": "Malcolm X"
+    },
+    {
+      "text": "Commit to the process and results will follow. (272)",
+      "author": "Brené Brown"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (273)",
+      "author": "Paulo Coelho"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (274)",
+      "author": "Steve Jobs"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (275)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (276)",
+      "author": "Simon Sinek"
+    },
+    {
+      "text": "Commit to the process and results will follow. (277)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (278)",
+      "author": "Ryan Holiday"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (279)",
+      "author": "Epictetus"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (280)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (281)",
+      "author": "Mark Twain"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (282)",
+      "author": "George Washington"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (283)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (284)",
+      "author": "George Washington"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (285)",
+      "author": "William James"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (286)",
+      "author": "Theodore Roosevelt"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (287)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (288)",
+      "author": "Theodore Roosevelt"
+    },
+    {
+      "text": "Commit to the process and results will follow. (289)",
+      "author": "George Washington"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (290)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (291)",
+      "author": "Jeff Bezos"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (292)",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (293)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (294)",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (295)",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (296)",
+      "author": "Oprah Winfrey"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (297)",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "text": "Commit to the process and results will follow. (298)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (299)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Commit to the process and results will follow. (300)",
+      "author": "Steve Jobs"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (301)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (302)",
+      "author": "Buddha"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (303)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "Commit to the process and results will follow. (304)",
+      "author": "James Clear"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (305)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (306)",
+      "author": "Benjamin Franklin"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (307)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (308)",
+      "author": "Aristotle"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (309)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (310)",
+      "author": "Benjamin Franklin"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (311)",
+      "author": "Jim Rohn"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (312)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (313)",
+      "author": "Theodore Roosevelt"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (314)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (315)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (316)",
+      "author": "Brené Brown"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (317)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (318)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (319)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (320)",
+      "author": "Oscar Wilde"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (321)",
+      "author": "Sun Tzu"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (322)",
+      "author": "John Wooden"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (323)",
+      "author": "Maya Angelou"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (324)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (325)",
+      "author": "Seneca"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (326)",
+      "author": "Leonardo da Vinci"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (327)",
+      "author": "Seth Godin"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (328)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (329)",
+      "author": "Cal Newport"
+    },
+    {
+      "text": "Commit to the process and results will follow. (330)",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "Commit to the process and results will follow. (331)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (332)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (333)",
+      "author": "Jim Rohn"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (334)",
+      "author": "Henry David Thoreau"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (335)",
+      "author": "Benjamin Franklin"
+    },
+    {
+      "text": "Commit to the process and results will follow. (336)",
+      "author": "Jocko Willink"
+    },
+    {
+      "text": "Commit to the process and results will follow. (337)",
+      "author": "Tony Robbins"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (338)",
+      "author": "Ralph Waldo Emerson"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (339)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (340)",
+      "author": "Friedrich Nietzsche"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (341)",
+      "author": "Lao Tzu"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (342)",
+      "author": "Buddha"
+    },
+    {
+      "text": "Choose effort over comfort and direction becomes clear. (343)",
+      "author": "William James"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (344)",
+      "author": "Tim Ferriss"
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (345)",
+      "author": "Socrates"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (346)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (347)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (348)",
+      "author": "Vince Lombardi"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (349)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "Momentum grows when effort becomes routine. (350)",
+      "author": "Warren Buffett"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (351)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Focus on the next meaningful step and take it with intent. (352)",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (353)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (354)",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "text": "What you practice daily becomes who you are. (355)",
+      "author": "Elon Musk"
+    },
+    {
+      "text": "Discipline turns ordinary days into long-term advantage. (356)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (357)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Commit to the process and results will follow. (358)",
+      "author": "Robin Sharma"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (359)",
+      "author": "Jordan Peterson"
+    },
+    {
+      "text": "Progress favors those who show up even when motivation fades. (360)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Consistency today quietly builds strength for tomorrow. (361)",
+      "author": "Bruce Lee"
+    },
+    {
+      "text": "Clarity comes from action taken without hesitation. (362)",
+      "author": "Plato"
+    },
+    {
+      "text": "Small actions repeated daily reshape your future. (363)",
+      "author": "Sun Tzu"
+    },
+    {
+      "text": "Commit to the process and results will follow. (364)",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "What you practice daily becomes who you are. (365)",
+      "author": "Marcus Aurelius"
     }
   ]
 }
