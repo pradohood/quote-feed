@@ -1,7 +1,13 @@
 {
-  "index": 0,
+  "index": 1,
   "quotes": [
-    { "text": "Test quote one.", "author": "System" },
-    { "text": "Test quote two.", "author": "System" }
+    {
+      "text": "Test quote one.",
+      "author": "System"
+    },
+    {
+      "text": "Test quote two.",
+      "author": "System"
+    }
   ]
 }

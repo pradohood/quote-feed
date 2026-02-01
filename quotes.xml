@@ -3,8 +3,10 @@
   <channel>
     <title>Quote of the Day</title>
     <description>Daily mindset and motivation quote</description>
-    <link>https://YOURUSERNAME.github.io/quote-feed/</link>
-
-    <!-- THIS FILE IS AUTO-GENERATED -->
+    <link>https://pradohood.github.io/quote-feed/</link>
+    <item>
+      <title>Test quote one.</title>
+      <description>— System</description>
+    </item>
   </channel>
 </rss>
