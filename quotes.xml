@@ -4,9 +4,11 @@
     <title>Quote of the Day</title>
     <description>Daily mindset and motivation quote</description>
     <link>https://pradohood.github.io/quote-feed/</link>
+
     <item>
-      <title>Test quote one.</title>
+      <title>Test quote two.</title>
       <description>— System</description>
     </item>
+
   </channel>
 </rss>
