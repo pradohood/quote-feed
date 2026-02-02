@@ -29,6 +29,9 @@ jobs:
       - name: Rotate daily question
         run: node rotate-question.js
 
+      - name: Rotate dad joke
+        run: node rotate-dadjoke.js
+
       - name: Commit changes
         run: |
           git config user.name "quote-bot"
