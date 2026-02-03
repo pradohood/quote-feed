@@ -1,4 +1,4 @@
-name: NBA Standings (Daily)
+name: NBA Daily Standings
 
 on:
   schedule:
@@ -7,39 +7,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-standings:
+  fetch:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "20"
+          python-version: "3.11"
 
-      - name: Install dependencies
-        run: |
-         npm install node-fetch@3
+      - name: Install deps
+        run: pip install requests
 
+      - name: Fetch NBA standings
+        run: python scripts/fetch_nba_standings.py
 
-      - name: Generate NBA standings JSON
-        run: |
-          node scripts/format_nba_standings.js
-
-      - name: Upload to Dropbox
+      - name: Upload to Dropbox (debug)
         env:
-          DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
         run: |
-          curl -X POST https://content.dropboxapi.com/2/files/upload \
-            --header "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
-            --header "Dropbox-API-Arg: {\"path\": \"/trmnl/nba_standings.json\",\"mode\": \"overwrite\",\"mute\": true}" \
+          echo "Uploading nba_standings.json to Dropbox…"
+          curl -v -X POST https://content.dropboxapi.com/2/files/upload \
+            --header "Authorization: Bearer $DROPBOX_TOKEN" \
+            --header "Dropbox-API-Arg: {\"path\": \"/nba/nba_standings.json\", \"mode\": \"overwrite\", \"autorename\": false}" \
             --header "Content-Type: application/octet-stream" \
             --data-binary @nba_standings.json
-
-      - name: Upload artifact (debug safety)
-        uses: actions/upload-artifact@v4
-        with:
-          name: nba-standings-json
-          path: nba_standings.json
