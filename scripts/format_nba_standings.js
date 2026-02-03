@@ -23,23 +23,25 @@ async function main() {
   const east = [];
   const west = [];
 
-  for (const entry of data.standings.entries) {
-    const team = entry.team;
-    const stats = Object.fromEntries(
-      entry.stats.map(s => [s.name, s.value])
-    );
+  for (const conference of data.children) {
+    const target =
+      conference.name === "Eastern Conference" ? east :
+      conference.name === "Western Conference" ? west :
+      null;
 
-    const formatted = {
-      abbreviation: team.abbreviation,
-      rank: stats.playoffSeed,
-      wins: stats.wins,
-      losses: stats.losses
-    };
+    if (!target) continue;
 
-    if (entry.conference.name === "Eastern Conference") {
-      east.push(formatted);
-    } else if (entry.conference.name === "Western Conference") {
-      west.push(formatted);
+    for (const entry of conference.standings.entries) {
+      const stats = Object.fromEntries(
+        entry.stats.map(s => [s.name, s.value])
+      );
+
+      target.push({
+        rank: stats.playoffSeed,
+        abbreviation: entry.team.abbreviation,
+        wins: stats.wins,
+        losses: stats.losses
+      });
     }
   }
 
