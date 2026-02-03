@@ -1,0 +1,45 @@
+name: NBA Standings (Daily)
+
+on:
+  schedule:
+    # 15:30 Asia/Manila == 07:30 UTC
+    - cron: "30 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  build-standings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install node-fetch@3
+
+      - name: Generate NBA standings JSON
+        run: |
+          node scripts/format_nba_standings.js
+
+      - name: Upload to Dropbox
+        env:
+          DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+        run: |
+          curl -X POST https://content.dropboxapi.com/2/files/upload \
+            --header "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
+            --header "Dropbox-API-Arg: {\"path\": \"/trmnl/nba_standings.json\",\"mode\": \"overwrite\",\"mute\": true}" \
+            --header "Content-Type: application/octet-stream" \
+            --data-binary @nba_standings.json
+
+      - name: Upload artifact (debug safety)
+        uses: actions/upload-artifact@v4
+        with:
+          name: nba-standings-json
+          path: nba_standings.json
