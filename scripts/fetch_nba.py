@@ -26,9 +26,9 @@ for e in raw.get("events", []):
 
     game = {
         "winner": winner["team"]["abbreviation"],
-        "winner_score": winner["score"],
+        "winner_score": int(winner["score"]),
         "loser": loser["team"]["abbreviation"],
-        "loser_score": loser["score"],
+        "loser_score": int(loser["score"]),
         "season_type": e["season"]["type"],
         "series": comp.get("series", {}).get("summary"),
         "leaders": comp.get("leaders", [])
@@ -37,7 +37,7 @@ for e in raw.get("events", []):
     games.append(game)
 
 out = {
-    "generated_at": datetime.utcnow().isoformat(),
+    "generated_at_utc": datetime.utcnow().isoformat(),
     "games": games
 }
 
