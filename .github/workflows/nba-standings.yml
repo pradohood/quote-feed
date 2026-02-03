@@ -13,16 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.11"
+          node-version: "20"
 
-      - name: Install deps
-        run: pip install requests
-
-      - name: Fetch NBA standings
-        run: python scripts/fetch_nba_standings.py
+      - name: Run standings formatter
+        run: node scripts/fetch_nba_standings.js
 
       - name: Upload to Dropbox (debug)
         env:
