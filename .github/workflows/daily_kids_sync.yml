@@ -20,20 +20,23 @@ jobs:
       - name: Install Dependencies
         run: pip install Pillow google-genai
 
-      - name: Generate Content with Gemini
+      - name: Generate Content
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python generate_daily.py
 
+      - name: DEBUG - List Generated Files
+        run: ls -l *.png
+
       - name: Install rclone
         run: curl https://rclone.org/install.sh | sudo bash
 
-      - name: Upload PNGs to Dropbox via rclone
+      - name: Upload to Dropbox
         env:
           RCLONE_CONFIG_DROPBOX_TYPE: dropbox
           RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
         run: |
-          # Copying the generated PNGs to your specific folder
+          # Using "copy" ensures it works for individual files
           rclone copy ./history.png dropbox:"Apps/pradohood github/"
           rclone copy ./animal.png dropbox:"Apps/pradohood github/"
           rclone copy ./affirmation.png dropbox:"Apps/pradohood github/"
