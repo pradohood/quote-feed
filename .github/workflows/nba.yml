@@ -23,14 +23,15 @@ jobs:
       - name: Fetch NBA scores
         run: python scripts/fetch_nba.py
 
-      - name: Upload to Dropbox (debug)
-        env:
-          DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
+      - name: Install rclone
         run: |
-          echo "Uploading nba.json to Dropbox…"
-          curl -v -X POST https://content.dropboxapi.com/2/files/upload \
-            --header "Authorization: Bearer $DROPBOX_TOKEN" \
-            --header "Dropbox-API-Arg: {\"path\": \"/nba/nba.json\", \"mode\": \"overwrite\", \"autorename\": false}" \
-            --header "Content-Type: application/octet-stream" \
-            --data-binary @nba.json
+          curl https://rclone.org/install.sh | sudo bash
+
+      - name: Upload nba.json to Dropbox via rclone
+        env:
+          RCLONE_CONFIG_DROPBOX_TYPE: dropbox
+          RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
+        run: |
+          rclone copyto nba.json dropbox:"Apps/pradohood github/nba/nba.json"
+
 
