@@ -19,10 +19,13 @@ try:
         temperature=0.8
     )
     raw_output = completion.choices[0].message.content.strip()
+    print(f"AI Output: {raw_output}")
 except Exception as e:
+    print(f"Error calling Groq: {e}")
     raw_output = "You are capable of amazing things. | Inspiration"
 
 # 3. Robust Parsing & Cleaning
+# We split the quote and author first
 if "|" in raw_output:
     parts = raw_output.split("|")
     quote = parts[0].strip()
@@ -31,11 +34,15 @@ else:
     quote = raw_output
     author = "Inspiration"
 
-# Clean characters that break JSON or E-ink
-final_message = quote.replace('"', '')
-final_signature = f"- {author.replace('"', '')}"
+# We clean the text on separate lines to avoid f-string SyntaxErrors
+clean_quote = quote.replace('"', '')
+clean_author = author.replace('"', '')
 
-# 4. Push to Dot. Quote/0
+# Build final strings for the payload
+final_message = clean_quote
+final_signature = f"- {clean_author}"
+
+# 4. Push to Dot. Quote/0 using DOT_API_KEY_2
 device_id = os.environ["DOT_DEVICE_ID"]
 url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 
@@ -51,5 +58,9 @@ headers = {
     "Content-Type": "application/json"
 }
 
-res = requests.post(url, json=payload, headers=headers)
-print(f"Status: {res.status_code}")
+try:
+    res = requests.post(url, json=payload, headers=headers)
+    print(f"Dot API Status: {res.status_code}")
+    print(f"Response: {res.text}")
+except Exception as e:
+    print(f"Connection Error: {e}")
