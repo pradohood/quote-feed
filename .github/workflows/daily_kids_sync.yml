@@ -2,8 +2,8 @@ name: Daily Gemini E-Ink Update
 
 on:
   schedule:
-    - cron: '0 12 * * *' # Runs daily at 12:00 UTC
-  workflow_dispatch:      # Allows manual trigger for testing
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 jobs:
   update_images:
@@ -28,23 +28,13 @@ jobs:
       - name: Install rclone
         run: curl https://rclone.org/install.sh | sudo bash
 
-      - name: Configure rclone
+      - name: Upload PNGs to Dropbox via rclone
+        env:
+          RCLONE_CONFIG_DROPBOX_TYPE: dropbox
+          RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
         run: |
-          mkdir -p ~/.config/rclone
-          # Creating the config structure using your raw token secret
-          cat << EOF > ~/.config/rclone/rclone.conf
-          [mydropbox]
-          type = dropbox
-          token = ${{ secrets.RCLONE_DROPBOX_TOKEN }}
-          EOF
-
-      - name: Push to Dropbox
-        run: |
-          # Use the nickname 'mydropbox' defined in the config above
-          rclone copy ./history.png "mydropbox:Apps/pradohood github/"
-          rclone copy ./animal.png "mydropbox:Apps/pradohood github/"
-          rclone copy ./affirmation.png "mydropbox:Apps/pradohood github/"
-          rclone copy ./joke.png "mydropbox:Apps/pradohood github/"
-          
-      - name: Verify Upload
-        run: rclone ls "mydropbox:Apps/pradohood github/"
+          # Copying the generated PNGs to your specific folder
+          rclone copy ./history.png dropbox:"Apps/pradohood github/"
+          rclone copy ./animal.png dropbox:"Apps/pradohood github/"
+          rclone copy ./affirmation.png dropbox:"Apps/pradohood github/"
+          rclone copy ./joke.png dropbox:"Apps/pradohood github/"
