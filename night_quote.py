@@ -2,42 +2,62 @@ import os
 import requests
 from groq import Groq
 
+# 1. Setup Groq
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
-# 1. Generate the quote
+# 2. Generate the message
+print("Requesting quote from Groq...")
 completion = client.chat.completions.create(
     model="llama-3.3-70b-versatile",
     messages=[
         {
             "role": "system", 
-            "content": "Provide a famous or fictional quote for a 12yo kid. Format: Quote | Author. Keep quote < 80 chars."
+            "content": "Provide an inspiring quote for a child under 12. Fictional characters (Yoda, Dumbledore, etc.) are encouraged. Format: Quote | Author. Keep quote under 80 characters."
         },
-        {"role": "user", "content": "Give me tonight's quote."}
+        {"role": "user", "content": "Generate tonight's quote."}
     ],
     temperature=0.8
 )
 
-# Split the response into Quote and Author
-raw_text = completion.choices[0].message.content.strip().replace('"', '')
-if "|" in raw_text:
-    quote, author = raw_text.split("|")
-else:
-    quote, author = raw_text, "Inspiration"
+raw_output = completion.choices[0].message.content.strip()
+print(f"AI Raw Output: {raw_output}")
 
-# 2. Push to Dot. Quote/0
-url = f"https://dot.mindreset.tech/api/authV2/open/device/{os.environ['DOT_DEVICE_ID']}/text"
+# 3. Robust Parsing
+if "|" in raw_output:
+    parts = raw_output.split("|")
+    quote = parts[0].strip().replace('"', '')
+    author = parts[1].strip().replace('"', '')
+else:
+    # Fallback if AI misses the separator
+    quote = raw_output.replace('"', '')
+    author = "Inspiration"
+
+print(f"Parsed Quote: {quote}")
+print(f"Parsed Author: {author}")
+
+# 4. Push to Dot. Quote/0
+device_id = os.environ["DOT_DEVICE_ID"]
+url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 
 payload = {
     "title": "Evening Thought",
-    "message": quote.strip(),
-    "signature": f"— {author.strip()}", # Puts the author in the signature slot
-    "taskKey": "night_quote",           # Matches your new task in the Dot App
+    "message": quote,
+    "signature": f"— {author}",
     "refreshNow": True
 }
+
+# IMPORTANT: If you couldn't find Task Keys in the app, 
+# REMOVE the taskKey line entirely. It will default to the primary Text API slot.
+# If you DID find it, add it back below:
+# payload["taskKey"] = "night_quote"
 
 headers = {
     "Authorization": f"Bearer {os.environ['DOT_API_KEY']}",
     "Content-Type": "application/json"
 }
 
-requests.post(url, json=payload, headers=headers)
+print("Sending to Dot API...")
+res = requests.post(url, json=payload, headers=headers)
+
+print(f"Dot API Status Code: {res.status_code}")
+print(f"Dot API Response: {res.text}")
