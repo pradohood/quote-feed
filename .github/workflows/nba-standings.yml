@@ -21,8 +21,14 @@ jobs:
       - name: Install deps
         run: pip install requests
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Generate NBA standings JSON
-        run: python scripts/fetch_nba_standings.js
+        run: node scripts/fetch_nba_standings.js
+
 
       # ---- rclone setup ----
       - name: Install rclone
