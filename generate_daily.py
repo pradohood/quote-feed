@@ -1,43 +1,67 @@
-name: Daily Gemini E-Ink Update
+import os
+import datetime
+import textwrap
+import time
+from google import genai
+from PIL import Image, ImageDraw, ImageFont
 
-on:
-  schedule:
-    - cron: '0 12 * * *'
-  workflow_dispatch:
+# --- CONFIGURATION ---
+# 7.3" E-Ink Resolution (800x480 is standard)
+WIDTH, HEIGHT = 800, 480 
+WHITE = 255
+BLACK = 0
 
-jobs:
-  update_images:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+def get_content(prompt):
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=f"{prompt}. Keep it under 180 characters. Kid-friendly for ages 11 and below."
+        )
+        return response.text.strip()
+    except Exception as e:
+        print(f"API Error (using backup): {e}")
+        return None
 
-      - name: Install Dependencies
-        run: pip install Pillow google-genai
+def create_png(title, text, filename):
+    img = Image.new('L', (WIDTH, HEIGHT), WHITE)
+    draw = ImageDraw.Draw(img)
+    
+    # Font Logic - Fallback to default if custom fonts aren't found
+    try:
+        title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 45)
+        body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 35)
+    except:
+        title_font = body_font = ImageFont.load_default()
 
-      - name: Generate Content
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python generate_daily.py
+    # Header & Date
+    today = datetime.datetime.now().strftime("%A, %b %d")
+    draw.text((40, 30), title, font=title_font, fill=BLACK)
+    draw.text((WIDTH - 250, 45), today, font=ImageFont.load_default(), fill=BLACK)
+    draw.line((40, 100, WIDTH-40, 100), fill=BLACK, width=4)
 
-      - name: DEBUG - List Generated Files
-        run: ls -l *.png
+    # Wrap Text
+    lines = textwrap.wrap(text, width=35) 
+    y_text = 140
+    for line in lines:
+        draw.text((40, y_text), line, font=body_font, fill=BLACK)
+        y_text += 55
 
-      - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
+    img.save(filename)
+    print(f"SUCCESS: Created {filename}")
 
-      - name: Upload to Dropbox
-        env:
-          RCLONE_CONFIG_DROPBOX_TYPE: dropbox
-          RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
-        run: |
-          # Using "copy" ensures it works for individual files
-          rclone copy ./history.png dropbox:"Apps/pradohood github/"
-          rclone copy ./animal.png dropbox:"Apps/pradohood github/"
-          rclone copy ./affirmation.png dropbox:"Apps/pradohood github/"
-          rclone copy ./joke.png dropbox:"Apps/pradohood github/"
+# --- TASKS & BACKUPS ---
+tasks = {
+    "history.png": {
+        "title": "ON THIS DAY",
+        "prompt": "Tell me an interesting historical event for today.",
+        "backup": "On this day: The world kept spinning! (API connection failed, check back tomorrow!)"
+    },
+    "animal.png": {
+        "title": "ANIMAL FACT",
+        "prompt": "Tell me a cool animal fact.",
+        "backup": "Did you know? Cats sleep 70% of their lives! (Backup fact - API unavailable)"
+    },
+    "affirmation.png": {
+        "title": "AFFIRMATION
