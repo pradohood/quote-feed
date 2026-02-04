@@ -14,8 +14,9 @@ client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 def get_content(prompt):
     try:
+        # CHANGED: Using 'gemini-1.5-flash-latest' to resolve the 404 error
         response = client.models.generate_content(
-            model="gemini-1.5-flash",
+            model="gemini-1.5-flash-latest",
             contents=f"{prompt}. Keep it under 180 characters. Kid-friendly for ages 11 and below."
         )
         return response.text.strip()
@@ -29,13 +30,8 @@ def create_png(title, text, filename):
     
     # --- FONT SIZES ---
     try:
-        # Title = Big (50)
         title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 50)
-        
-        # Content = Medium (35) - The main focus
         body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 35)
-        
-        # Date = Small (24) - Readable but secondary
         date_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
     except:
         title_font = body_font = date_font = ImageFont.load_default()
@@ -49,17 +45,15 @@ def create_png(title, text, filename):
     y_text = 140
     for line in lines:
         draw.text((40, y_text), line, font=body_font, fill=BLACK)
-        y_text += 50 # Line spacing
+        y_text += 50
 
     # 3. Draw Date (Centered at Bottom)
     today = datetime.datetime.now().strftime("%A, %b %d, %Y")
     
-    # Calculate center position for the date
     bbox = draw.textbbox((0, 0), today, font=date_font)
     text_width = bbox[2] - bbox[0]
     x_date = (WIDTH - text_width) / 2
     
-    # Position at y=430 (near bottom)
     draw.text((x_date, 430), today, font=date_font, fill=BLACK)
 
     img.save(filename)
@@ -69,17 +63,17 @@ def create_png(title, text, filename):
 tasks = {
     "history.png": {
         "title": "ON THIS DAY",
-        "prompt": "Tell me an interesting historical event for today. Use the current date in the Philippines",
+        "prompt": "Tell me an interesting historical event for today.",
         "backup": "On this day: The world kept spinning! (API connection failed)"
     },
     "animal.png": {
         "title": "ANIMAL FACT",
-        "prompt": "Tell me a cool, animal fact.",
+        "prompt": "Tell me a cool animal fact.",
         "backup": "Did you know? Cats sleep 70% of their lives!"
     },
     "affirmation.png": {
-        "title": "DAILY AFFIRMATION",
-        "prompt": "Give me a positive kid-friendly affirmation. Ideally related to school",
+        "title": "AFFIRMATION",
+        "prompt": "Give me a positive kid-friendly affirmation.",
         "backup": "I am capable of solving any problem!"
     },
     "joke.png": {
@@ -92,6 +86,10 @@ tasks = {
 # --- RUN ---
 for filename, data in tasks.items():
     print(f"Generating {filename}...")
-    content = get_content(data["prompt"]) or data["backup"]
+    content = get_content(data["prompt"])
+    
+    if not content:
+        content = data["backup"]
+        
     create_png(data["title"], content, filename)
     time.sleep(5)
