@@ -22,7 +22,7 @@ jobs:
         run: pip install requests
 
       - name: Generate NBA standings JSON
-        run: python scripts/fetch_nba_standings.py
+        run: python scripts/fetch_nba_standings.js
 
       # ---- rclone setup ----
       - name: Install rclone
