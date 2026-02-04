@@ -12,20 +12,9 @@ BLACK = 0
 
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
-# --- DIAGNOSTIC STEP (Fixed) ---
-def print_available_models():
-    print("--- DIAGNOSTIC: Checking Available Models ---")
-    try:
-        # Simple list to see what we can actually touch
-        for m in client.models.list():
-            print(f"Found Model: {m.name}")
-    except Exception as e:
-        print(f"Diagnostic Error: {e}")
-    print("---------------------------------------------")
-
 def get_content(prompt):
     try:
-        # REVERTED TO 2.0-flash (The only one that connected successfully before)
+        # Using the model confirmed in your list
         response = client.models.generate_content(
             model="gemini-2.0-flash",
             contents=f"{prompt}. Keep it under 180 characters. Kid-friendly for ages 11 and below."
@@ -95,14 +84,15 @@ tasks = {
 }
 
 # --- RUN ---
-print_available_models()
-
 for filename, data in tasks.items():
     print(f"Generating {filename}...")
-    content = get_content(data["prompt"])
     
+    content = get_content(data["prompt"])
     if not content:
         content = data["backup"]
         
     create_png(data["title"], content, filename)
-    time.sleep(5)
+    
+    # 20 seconds is the sweet spot: Safe for API, cheap for GitHub billing
+    print("Waiting 20 seconds...")
+    time.sleep(20)
