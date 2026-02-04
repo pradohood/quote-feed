@@ -42,4 +42,4 @@ jobs:
 
       - name: Upload JSON to Dropbox via rclone
         run: |
-          rclone copyto nba_standings.json dropbox:nba/nba_standings.json -v
+          rclone copyto nba.json dropbox:"Apps/pradohood github/nba/nba_standings.json"
