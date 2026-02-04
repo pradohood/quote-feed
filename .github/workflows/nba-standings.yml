@@ -41,5 +41,8 @@ jobs:
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
       - name: Upload JSON to Dropbox via rclone
+        env:
+          RCLONE_CONFIG_DROPBOX_TYPE: dropbox
+          RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
         run: |
           rclone copyto nba.json dropbox:"Apps/pradohood github/nba/nba_standings.json"
