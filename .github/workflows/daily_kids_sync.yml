@@ -25,13 +25,14 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python generate_daily.py
 
-      - name: Setup Rclone
-        uses: rclone/rclone-action@v1
-        env:
-          RCLONE_CONFIG_DROPBOX_TYPE: dropbox
-          RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
-        with:
-          args: config
+      - name: Install rclone
+        run: |
+          curl https://rclone.org/install.sh | sudo bash
+
+      - name: Configure rclone
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
       - name: Push to Dropbox
         run: |
