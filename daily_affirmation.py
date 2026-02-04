@@ -45,7 +45,7 @@ url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 payload = {
     "title": "A Note for You",
     "message": affirmation,
-    "signature": "Love, Dad",
+    "signature": "Love, Mom & Dad",
     "refreshNow": True
 }
 
