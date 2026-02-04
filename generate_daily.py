@@ -12,11 +12,24 @@ BLACK = 0
 
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
+# --- DIAGNOSTIC STEP ---
+# This will print available models to the log so we stop guessing if it fails
+def print_available_models():
+    print("--- DIAGNOSTIC: Checking Available Models ---")
+    try:
+        # Note: We list models to see what your specific API key can access
+        for m in client.models.list():
+            if "generateContent" in m.supported_generation_methods:
+                print(f"Available: {m.name}")
+    except Exception as e:
+        print(f"Could not list models: {e}")
+    print("---------------------------------------------")
+
 def get_content(prompt):
     try:
-        # CHANGED: Using 'gemini-1.5-flash-latest' to resolve the 404 error
+        # FIX: Using the specific version 'gemini-1.5-flash-001' which is most stable
         response = client.models.generate_content(
-            model="gemini-1.5-flash-latest",
+            model="gemini-1.5-flash-001",
             contents=f"{prompt}. Keep it under 180 characters. Kid-friendly for ages 11 and below."
         )
         return response.text.strip()
@@ -84,6 +97,10 @@ tasks = {
 }
 
 # --- RUN ---
+# 1. Run Diagnostic first
+print_available_models()
+
+# 2. Run Generation Loop
 for filename, data in tasks.items():
     print(f"Generating {filename}...")
     content = get_content(data["prompt"])
