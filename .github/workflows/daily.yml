@@ -1,4 +1,4 @@
-name: Daily Quote Rotation
+name: Daily Dad Joke XML Rotation
 
 on:
   schedule:
