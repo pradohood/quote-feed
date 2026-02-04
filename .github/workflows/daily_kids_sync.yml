@@ -3,11 +3,11 @@ name: Daily Gemini E-Ink Update
 on:
   schedule:
     - cron: '0 12 * * *' # Runs daily at 12:00 UTC
-  workflow_dispatch:      # Allows you to click "Run workflow" manually
+  workflow_dispatch:      # Allows manual trigger for testing
 
 jobs:
-  update_images:          # This is the Job ID
-    runs-on: ubuntu-latest # This is the required property that was likely missing
+  update_images:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -18,8 +18,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install Dependencies
-        run: |
-          pip install Pillow google-genai
+        run: pip install Pillow google-genai
 
       - name: Generate Content with Gemini
         env:
@@ -27,18 +26,25 @@ jobs:
         run: python generate_daily.py
 
       - name: Install rclone
-        run: |
-          curl https://rclone.org/install.sh | sudo bash
+        run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Configure rclone
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+          # Creating the config structure using your raw token secret
+          cat << EOF > ~/.config/rclone/rclone.conf
+          [mydropbox]
+          type = dropbox
+          token = ${{ secrets.RCLONE_DROPBOX_TOKEN }}
+          EOF
 
       - name: Push to Dropbox
         run: |
-          # Ensure 'dropbox' matches the [name] inside your secret
-          rclone copy ./history.png "dropbox:Apps/pradohood github/"
-          rclone copy ./animal.png "dropbox:Apps/pradohood github/"
-          rclone copy ./affirmation.png "dropbox:Apps/pradohood github/"
-          rclone copy ./joke.png "dropbox:Apps/pradohood github/"
+          # Use the nickname 'mydropbox' defined in the config above
+          rclone copy ./history.png "mydropbox:Apps/pradohood github/"
+          rclone copy ./animal.png "mydropbox:Apps/pradohood github/"
+          rclone copy ./affirmation.png "mydropbox:Apps/pradohood github/"
+          rclone copy ./joke.png "mydropbox:Apps/pradohood github/"
+          
+      - name: Verify Upload
+        run: rclone ls "mydropbox:Apps/pradohood github/"
