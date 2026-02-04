@@ -1,8 +1,9 @@
 name: Nightly Quote Push
 on:
   schedule:
-    - cron: '0 12 * * *' # 8:00 PM Manila
+    - cron: '0 9 * * *' # 5:00 PM Manila
   workflow_dispatch:
+
 jobs:
   run-night-script:
     runs-on: ubuntu-latest
@@ -17,6 +18,6 @@ jobs:
       - name: Run Update
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          DOT_API_KEY: ${{ secrets.DOT_API_KEY }}
+          DOT_API_KEY_2: ${{ secrets.DOT_API_KEY_2 }} # Secret must match this
           DOT_DEVICE_ID: ${{ secrets.DOT_DEVICE_ID }}
         run: python night_quote.py
