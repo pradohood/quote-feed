@@ -5,11 +5,12 @@ import time
 from google import genai
 from PIL import Image, ImageDraw, ImageFont
 
-# 7.3" E-Ink Resolution (800x480 is standard)
+# 7.3" E-Ink Resolution
 WIDTH, HEIGHT = 800, 480 
 WHITE = 255
 BLACK = 0
 
+# --- CONFIGURATION ---
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 def get_content(prompt):
@@ -20,14 +21,14 @@ def get_content(prompt):
         )
         return response.text.strip()
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"API Error: {e}")
         return None
 
 def create_png(title, text, filename):
     img = Image.new('L', (WIDTH, HEIGHT), WHITE)
     draw = ImageDraw.Draw(img)
     
-    # Load basic fonts available on Ubuntu runners
+    # Font Logic
     try:
         title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 45)
         body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 35)
@@ -37,10 +38,10 @@ def create_png(title, text, filename):
     # Header
     today = datetime.datetime.now().strftime("%A, %b %d")
     draw.text((40, 30), title, font=title_font, fill=BLACK)
-    draw.text((WIDTH - 250, 40), today, font=ImageFont.load_default(), fill=BLACK)
+    draw.text((WIDTH - 250, 45), today, font=ImageFont.load_default(), fill=BLACK)
     draw.line((40, 100, WIDTH-40, 100), fill=BLACK, width=4)
 
-    # Content - Wrapped for 7.3" width
+    # Wrap Text
     lines = textwrap.wrap(text, width=35) 
     y_text = 140
     for line in lines:
@@ -48,20 +49,45 @@ def create_png(title, text, filename):
         y_text += 55
 
     img.save(filename)
+    print(f"SUCCESS: Created {filename}")
 
-# Tasks
-categories = {
-    "history.png": ("ON THIS DAY", "Tell me an interesting historical event for today."),
-    "animal.png": ("ANIMAL FACT", "Tell me a cool animal fact."),
-    "affirmation.png": ("AFFIRMATION", "Give me a positive kid-friendly affirmation."),
-    "joke.png": ("DAD JOKE", "Tell me a funny dad joke.")
+# --- JOB LIST ---
+tasks = {
+    "history.png": {
+        "title": "ON THIS DAY",
+        "prompt": "Tell me an interesting historical event for today.",
+        "backup": "On this day: The world kept spinning! (API connection failed, check back tomorrow!)"
+    },
+    "animal.png": {
+        "title": "ANIMAL FACT",
+        "prompt": "Tell me a cool animal fact.",
+        "backup": "Did you know? Cats sleep 70% of their lives! (Backup fact - API unavailable)"
+    },
+    "affirmation.png": {
+        "title": "AFFIRMATION",
+        "prompt": "Give me a positive kid-friendly affirmation.",
+        "backup": "I am capable of solving any problem! (Even technical ones!)"
+    },
+    "joke.png": {
+        "title": "DAD JOKE",
+        "prompt": "Tell me a funny dad joke.",
+        "backup": "Why did the computer go to the doctor? It had a virus! (Backup joke)"
+    }
 }
 
-for filename, (title, prompt) in categories.items():
-    content = get_content(prompt)
-    if content:
-        create_png(title, content, filename)
-        print(f"Created {filename}")
+# --- EXECUTION ---
+for filename, data in tasks.items():
+    print(f"Generating {filename}...")
     
-    # Delay to respect free tier quota
+    # Try to get content
+    content = get_content(data["prompt"])
+    
+    # If API fails, use backup
+    if not content:
+        print(f"Using BACKUP content for {filename}")
+        content = data["backup"]
+        
+    create_png(data["title"], content, filename)
+    
+    # Sleep to respect rate limits
     time.sleep(5)
