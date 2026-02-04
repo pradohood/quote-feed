@@ -1,11 +1,11 @@
 import os
 import datetime
 import textwrap
-import time  # Import time for the delay
+import time
 from google import genai
 from PIL import Image, ImageDraw, ImageFont
 
-# 7.3" E-Ink Resolution
+# 7.3" E-Ink Resolution (800x480 is standard)
 WIDTH, HEIGHT = 800, 480 
 WHITE = 255
 BLACK = 0
@@ -16,54 +16,52 @@ def get_content(prompt):
     try:
         response = client.models.generate_content(
             model="gemini-2.0-flash",
-            contents=f"{prompt}. Keep it under 200 characters. Kid-friendly for ages 11 and under."
+            contents=f"{prompt}. Keep it under 180 characters. Kid-friendly for ages 11 and under."
         )
         return response.text.strip()
     except Exception as e:
-        print(f"Error fetching Gemini content: {e}")
+        print(f"Error: {e}")
         return None
 
 def create_png(title, text, filename):
     img = Image.new('L', (WIDTH, HEIGHT), WHITE)
     draw = ImageDraw.Draw(img)
     
+    # Load basic fonts available on Ubuntu runners
     try:
-        title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 40)
-        body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
+        title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 45)
+        body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 35)
     except:
         title_font = body_font = ImageFont.load_default()
 
-    date_str = datetime.datetime.now().strftime("%B %d, %Y")
+    # Header
+    today = datetime.datetime.now().strftime("%A, %b %d")
     draw.text((40, 30), title, font=title_font, fill=BLACK)
-    draw.text((40, 80), date_str, font=body_font, fill=BLACK)
-    draw.line((40, 120, WIDTH-40, 120), fill=BLACK, width=3)
+    draw.text((WIDTH - 250, 40), today, font=ImageFont.load_default(), fill=BLACK)
+    draw.line((40, 100, WIDTH-40, 100), fill=BLACK, width=4)
 
-    lines = textwrap.wrap(text, width=45) 
-    y_text = 150
+    # Content - Wrapped for 7.3" width
+    lines = textwrap.wrap(text, width=35) 
+    y_text = 140
     for line in lines:
         draw.text((40, y_text), line, font=body_font, fill=BLACK)
-        y_text += 45
+        y_text += 55
 
     img.save(filename)
 
-# Daily Prompts
-tasks = {
-    "history.png": ("ON THIS DAY", "Give an interesting kid-friendly historical event for today's date."),
-    "animal.png": ("ANIMAL FACT", "Give a cool, surprising animal fact for kids."),
-    "affirmation.png": ("DAILY AFFIRMATION", "Give a short positive affirmation for a child."),
-    "joke.png": ("DAD JOKE", "Give a funny, clean dad joke for kids.")
+# Tasks
+categories = {
+    "history.png": ("ON THIS DAY", "Tell me an interesting historical event for today."),
+    "animal.png": ("ANIMAL FACT", "Tell me a cool animal fact."),
+    "affirmation.png": ("AFFIRMATION", "Give me a positive kid-friendly affirmation."),
+    "joke.png": ("DAD JOKE", "Tell me a funny dad joke.")
 }
 
-for file, (title, prompt) in tasks.items():
-    print(f"Requesting content for {title}...")
+for filename, (title, prompt) in categories.items():
     content = get_content(prompt)
-    
     if content:
-        create_png(title, content, file)
-        print(f"Successfully generated {file}")
-    else:
-        print(f"Skipping {file} due to API error.")
+        create_png(title, content, filename)
+        print(f"Created {filename}")
     
-    # ADDED DELAY: 5 seconds between each request to prevent quota bursts
-    print("Waiting 5 seconds before next request...")
+    # Delay to respect free tier quota
     time.sleep(5)
