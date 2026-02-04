@@ -6,39 +6,50 @@ from groq import Groq
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 # 2. Generate the quote
-completion = client.chat.completions.create(
-    model="llama-3.3-70b-versatile",
-    messages=[
-        {
-            "role": "system", 
-            "content": "Provide an inspiring quote for a child < 12. Fictional characters (Yoda, Dumbledore, etc.) are great. Format: Quote | Author. Keep quote < 80 chars."
-        },
-        {"role": "user", "content": "Generate tonight's quote."}
-    ]
-)
+try:
+    completion = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "system", 
+                "content": "Provide an inspiring quote for a child under 12. Fictional characters are great. Format: Quote | Author. Keep quote under 80 chars."
+            },
+            {"role": "user", "content": "Generate tonight's quote."}
+        ],
+        temperature=0.8
+    )
+    raw_output = completion.choices[0].message.content.strip()
+except Exception as e:
+    raw_output = "You are capable of amazing things. | Inspiration"
 
-raw_output = completion.choices[0].message.content.strip()
-
-# Parsing logic
+# 3. Robust Parsing & Cleaning
 if "|" in raw_output:
     parts = raw_output.split("|")
-    quote, author = parts[0].strip(), parts[1].strip()
+    quote = parts[0].strip()
+    author = parts[1].strip()
 else:
-    quote, author = raw_output, "Inspiration"
+    quote = raw_output
+    author = "Inspiration"
 
-# 3. Push to Dot. Quote/0 using KEY 2
-url = f"https://dot.mindreset.tech/api/authV2/open/device/{os.environ['DOT_DEVICE_ID']}/text"
+# Clean characters that break JSON or E-ink
+final_message = quote.replace('"', '')
+final_signature = f"- {author.replace('"', '')}"
+
+# 4. Push to Dot. Quote/0
+device_id = os.environ["DOT_DEVICE_ID"]
+url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 
 payload = {
-    "title": "Quote of the Day",
-    "message": quote.replace('"', ''),
-    "signature": f"— {author.replace('"', '')}",
+    "title": "Evening Thought",
+    "message": final_message,
+    "signature": final_signature,
     "refreshNow": True
 }
 
 headers = {
-    "Authorization": f"Bearer {os.environ['DOT_API_KEY_2']}", # Using the 2nd key
+    "Authorization": f"Bearer {os.environ['DOT_API_KEY_2']}",
     "Content-Type": "application/json"
 }
 
-requests.post(url, json=payload, headers=headers)
+res = requests.post(url, json=payload, headers=headers)
+print(f"Status: {res.status_code}")
