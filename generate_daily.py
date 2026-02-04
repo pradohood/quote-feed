@@ -52,6 +52,7 @@ def create_png(title, text, filename):
     print(f"SUCCESS: Created {filename}")
 
 # --- TASKS & BACKUPS ---
+# This dictionary contains the definitions for your 4 images
 tasks = {
     "history.png": {
         "title": "ON THIS DAY",
@@ -64,4 +65,29 @@ tasks = {
         "backup": "Did you know? Cats sleep 70% of their lives! (Backup fact - API unavailable)"
     },
     "affirmation.png": {
-        "title": "AFFIRMATION
+        "title": "AFFIRMATION",
+        "prompt": "Give me a positive kid-friendly affirmation.",
+        "backup": "I am capable of solving any problem! (Even technical ones!)"
+    },
+    "joke.png": {
+        "title": "DAD JOKE",
+        "prompt": "Tell me a funny dad joke.",
+        "backup": "Why did the computer go to the doctor? It had a virus! (Backup joke)"
+    }
+}
+
+# --- EXECUTION ---
+for filename, data in tasks.items():
+    print(f"Generating {filename}...")
+    
+    # Try to get content
+    content = get_content(data["prompt"])
+    
+    # If API fails, use backup
+    if not content:
+        content = data["backup"]
+        
+    create_png(data["title"], content, filename)
+    
+    # Sleep 5s to avoid hitting API rate limits
+    time.sleep(5)
