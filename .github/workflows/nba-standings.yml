@@ -45,4 +45,5 @@ jobs:
           RCLONE_CONFIG_DROPBOX_TYPE: dropbox
           RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
         run: |
-          rclone copyto nba.json dropbox:"Apps/pradohood github/nba/nba_standings.json"
+          rclone copyto ./nba_standings.json dropbox:"Apps/pradohood github/nba/nba_standings.json" -v
+
