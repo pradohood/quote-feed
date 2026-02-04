@@ -20,9 +20,19 @@ def get_content_safe(prompt):
     for model_name in model_chain:
         try:
             print(f"Attempting with model: {model_name}...")
+            
+            # UPDATED PROMPT: "Strictly output only the content" removes side comments
+            final_prompt = (
+                f"{prompt} "
+                "Keep it under 180 characters. "
+                "Strictly output ONLY the requested text. "
+                "No introductory phrases, no conversational filler, no character count. "
+                "Kid-friendly for ages 11 and below."
+            )
+            
             response = client.models.generate_content(
                 model=model_name,
-                contents=f"{prompt}. Keep it under 180 characters. Do not include the character count. Kid-friendly for ages 11 and below."
+                contents=final_prompt
             )
             return response.text.strip()
         except Exception as e:
@@ -95,7 +105,7 @@ tasks = {
     },
     "affirmation.png": {
         "title": "AFFIRMATION",
-        "prompt": f"Give me a positive kid-friendly affirmation about {random.choice(affirm_topics)}. Just the sentence.",
+        "prompt": f"Give me a positive kid-friendly affirmation about {random.choice(affirm_topics)}.",
         "backup": "I am capable of solving any problem!"
     },
     "joke.png": {
