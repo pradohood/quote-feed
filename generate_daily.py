@@ -2,6 +2,7 @@ import os
 import datetime
 import textwrap
 import time
+import random 
 from google import genai
 from PIL import Image, ImageDraw, ImageFont
 
@@ -13,9 +14,7 @@ BLACK = 0
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 def get_content_safe(prompt):
-    # LIST OF MODELS TO TRY IN ORDER
-    # 1. Lite (Best for quotas)
-    # 2. Flash Latest (Stable 1.5 alias found in your list)
+    # Try Lite first (Cheap), then Flash Latest (Reliable)
     model_chain = ["gemini-2.0-flash-lite-001", "gemini-flash-latest"]
     
     for model_name in model_chain:
@@ -23,15 +22,14 @@ def get_content_safe(prompt):
             print(f"Attempting with model: {model_name}...")
             response = client.models.generate_content(
                 model=model_name,
-                contents=f"{prompt}. Keep it under 180 characters. Kid-friendly for ages 11 and below."
+                contents=f"{prompt}. Keep it under 180 characters. Do not include the character count. Kid-friendly for ages 11 and below."
             )
             return response.text.strip()
         except Exception as e:
             print(f"Model {model_name} failed: {e}")
-            # Loop continues to the next model...
             time.sleep(1)
             
-    return None # Triggers backup text if ALL models fail
+    return None 
 
 def create_png(title, text, filename):
     img = Image.new('L', (WIDTH, HEIGHT), WHITE)
@@ -61,27 +59,49 @@ def create_png(title, text, filename):
     img.save(filename)
     print(f"SUCCESS: Created {filename}")
 
-# --- TASKS ---
+# --- EXPANDED TOPICS LIST ---
+today_str = datetime.datetime.now().strftime("%B %d")
+
+animal_topics = [
+    "ocean creature", "jungle animal", "bird", "insect", "reptile", 
+    "arctic animal", "dinosaur", "desert animal", "rainforest animal",
+    "nocturnal animal", "mammal", "amphibian", "Australian animal",
+    "African animal", "strange/weird animal", "endangered animal"
+]
+
+joke_topics = [
+    "pun", "knock-knock joke", "science joke", "animal joke", 
+    "school joke", "food joke", "space joke", "sports joke", 
+    "math joke", "music joke", "history joke", "winter/snow joke", 
+    "summer/beach joke", "pirate joke", "robot joke"
+]
+
+affirm_topics = [
+    "confidence", "kindness", "learning", "friendship", "bravery", 
+    "creativity", "gratitude", "patience", "honesty", "resilience", 
+    "generosity", "curiosity", "health/strength", "family", "nature"
+]
+
 tasks = {
     "history.png": {
         "title": "ON THIS DAY",
-        "prompt": "Tell me an interesting historical event for today.",
-        "backup": "On this day: The world kept spinning! (API Quota Hit - Resetting soon!)"
+        "prompt": f"Tell me an interesting historical event that happened on {today_str}.",
+        "backup": "On this day: The world kept spinning! (API Quota Hit)"
     },
     "animal.png": {
         "title": "ANIMAL FACT",
-        "prompt": "Tell me a cool animal fact.",
-        "backup": "Did you know? Cats sleep 70% of their lives! (Backup Fact)"
+        "prompt": f"Tell me a cool animal fact about a {random.choice(animal_topics)}.",
+        "backup": "Did you know? Cats sleep 70% of their lives!"
     },
     "affirmation.png": {
         "title": "AFFIRMATION",
-        "prompt": "Give me a positive kid-friendly affirmation.",
-        "backup": "I am capable of solving any problem! (Backup Affirmation)"
+        "prompt": f"Give me a positive kid-friendly affirmation about {random.choice(affirm_topics)}. Just the sentence.",
+        "backup": "I am capable of solving any problem!"
     },
     "joke.png": {
         "title": "DAD JOKE",
-        "prompt": "Tell me a funny dad joke.",
-        "backup": "Why did the computer go to the doctor? It had a virus! (Backup Joke)"
+        "prompt": f"Tell me a funny dad joke about {random.choice(joke_topics)}.",
+        "backup": "Why did the computer go to the doctor? It had a virus!"
     }
 }
 
@@ -89,7 +109,6 @@ tasks = {
 for filename, data in tasks.items():
     print(f"--- Generating {filename} ---")
     
-    # This will try Lite -> Flash Latest -> Backup
     content = get_content_safe(data["prompt"])
     
     if not content:
