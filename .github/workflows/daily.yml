@@ -21,16 +21,16 @@ jobs:
           node-version: "20"
 
       - name: Rotate quote
-        run: node rotate.js
+        run: node rotate.cjs
 
       - name: Rotate daily intention
-        run: node rotate-intention.js
+        run: node rotate-intention.cjs
 
       - name: Rotate daily question
-        run: node rotate-question.js
+        run: node rotate-question.cjs
 
       - name: Rotate dad joke
-        run: node rotate-dadjoke.js
+        run: node rotate-dadjoke.cjs
 
       - name: Commit changes
         run: |
