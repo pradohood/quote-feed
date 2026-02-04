@@ -47,7 +47,7 @@ device_id = os.environ["DOT_DEVICE_ID"]
 url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 
 payload = {
-    "title": "Evening Thought",
+    "title": "Quote of the Day",
     "message": final_message,
     "signature": final_signature,
     "refreshNow": True
