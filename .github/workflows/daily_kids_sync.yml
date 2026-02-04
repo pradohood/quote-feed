@@ -3,24 +3,25 @@ name: Daily Gemini E-Ink Update
 on:
   schedule:
     - cron: '0 12 * * *' # Runs daily at 12:00 UTC
-  workflow_dispatch:
+  workflow_dispatch:      # Allows you to click "Run workflow" manually
 
 jobs:
-  update-screen:
-    runs-on: ubuntu-latest
+  update_images:          # This is the Job ID
+    runs-on: ubuntu-latest # This is the required property that was likely missing
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install Deps
-        run: pip install Pillow google-genai
+      - name: Install Dependencies
+        run: |
+          pip install Pillow google-genai
 
-      - name: Generate Content
+      - name: Generate Content with Gemini
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python generate_daily.py
@@ -36,7 +37,7 @@ jobs:
 
       - name: Push to Dropbox
         run: |
-          # The quotes handle the space in "pradohood github"
+          # Ensure 'dropbox' matches the [name] inside your secret
           rclone copy ./history.png "dropbox:Apps/pradohood github/"
           rclone copy ./animal.png "dropbox:Apps/pradohood github/"
           rclone copy ./affirmation.png "dropbox:Apps/pradohood github/"
