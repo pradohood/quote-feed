@@ -1,44 +1,44 @@
 import os
 import requests
 from groq import Groq
+from datetime import datetime
 
 # 1. Setup Groq
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
-# 2. Generate the message with all your custom themes
-completion = client.chat.completions.create(
-    model="llama-3.3-70b-versatile",
-    messages=[
-        {
-            "role": "system", 
-            "content": (
-                "You are a supportive parent writing a short note for a child who struggles with school. "
-                "Notes must be under 60 characters and fit on a small e-ink screen. "
-                "CRITICAL: Never mention grades, studying, success, or 'having a good day at school'. "
-                "Focus on internal strength and being in their corner using these themes:\n"
-                "- Safety Net: 'No matter what happens, I'm on your team.'\n"
-                "- Release Valve: 'It's okay to have a meh day. Just be kind.'\n"
-                "- Perspective: 'School is just a small part of your big world.'\n"
-                "- Humor: 'Count how many times the teacher says um.'\n"
-                "- Internal Strength: 'You are more than a test score.' / 'Your brain is a powerhouse.'\n"
-                "- Authenticity: 'Be messy. Be real. Be you.'\n"
-                "- Action-Light: 'Focus on the done, not the do.' / 'Deep breaths. You're doing great.'\n"
-                "Generate one unique, warm, and low-pressure note."
-            )
-        },
-        {
-            "role": "user", 
-            "content": "Write today's note."
-        }
-    ],
-    temperature=0.8,
-    max_tokens=50
-)
+# 2. Get today's date to force variety
+today = datetime.now().strftime("%A, %B %d, %Y")
 
-# Clean up the response
-affirmation = completion.choices[0].message.content.strip().replace('"', '')
+# 3. Generate the message with variety logic
+try:
+    completion = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "system", 
+                "content": (
+                    "You are a supportive parent writing a short note for a child who struggles with school. "
+                    "Notes must be under 120 characters for a small e-ink screen. "
+                    "CRITICAL: Never mention grades, success, or 'having a good day'. "
+                    "Focus on internal strength using themes: Safety Net, Release Valve, "
+                    "Perspective, Humor, Internal Strength, Authenticity, or Action-Light. "
+                    "Pick a DIFFERENT theme every time. Be warm and low-pressure."
+                )
+            },
+            {
+                "role": "user", 
+                "content": f"Today is {today}. Write a unique note for today."
+            }
+        ],
+        temperature=1.1, # Increased for more variety
+        max_tokens=50
+    )
+    affirmation = completion.choices[0].message.content.strip().replace('"', '')
+except Exception as e:
+    print(f"Error: {e}")
+    affirmation = "You're more than enough, exactly as you are."
 
-# 3. Push to Dot. Quote/0 (296x152)
+# 4. Push to Dot. Quote/0
 device_id = os.environ["DOT_DEVICE_ID"]
 url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 
