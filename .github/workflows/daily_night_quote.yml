@@ -20,4 +20,4 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           DOT_API_KEY_2: ${{ secrets.DOT_API_KEY_2 }} # Secret must match this
           DOT_DEVICE_ID: ${{ secrets.DOT_DEVICE_ID }}
-        run: python night_quote.py
+        run: python find_keys.py
