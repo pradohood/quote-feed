@@ -1,8 +1,7 @@
 name: Daily Dad Joke XML Rotation
-
 on:
   schedule:
-    - cron: "0 0 * * *"   # 08:00 UTC+8
+    - cron: "0 0 * * *" # 08:00 UTC+8
   workflow_dispatch:
 
 permissions:
@@ -20,24 +19,15 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Rotate quote
-        run: node rotate.cjs
-
-      - name: Rotate daily intention
-        run: node rotate-intention.cjs
-
-      - name: Rotate daily question
-        run: node rotate-question.cjs
-
-      - name: Rotate dad joke
-        run: node rotate-dadjoke.cjs
+      - name: Rotate all content
+        run: |
+          node rotate.cjs
+          node rotate-dadjoke.cjs
 
       - name: Commit changes
         run: |
           git config user.name "quote-bot"
           git config user.email "quote-bot@users.noreply.github.com"
-          git add quotes.xml quotes.json intentions.xml intentions.json questions.xml questions.json
-          git add dadjokes.xml dadjokes.json
+          git add quotes.xml quotes.json dadjokes.xml dadjokes.json
           git commit -m "Daily content update" || echo "No changes"
           git push
-
