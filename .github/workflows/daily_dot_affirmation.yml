@@ -1,7 +1,7 @@
 name: Daily Dot Push Affirmation
 on:
   schedule:
-    - cron: '0 19 * * *' # This is 3:00 AM Manila Time (UTC+8)
+    - cron: '0 19 * * *' # 3:00 AM Manila Time
   workflow_dispatch:
 
 jobs:
@@ -9,15 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+
       - name: Install dependencies
         run: pip install requests groq
-      - name: Run Update
+
+      - name: Run Morning Affirmation
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           DOT_API_KEY: ${{ secrets.DOT_API_KEY }}
           DOT_DEVICE_ID: ${{ secrets.DOT_DEVICE_ID }}
         run: python daily_affirmation.py
+
+      - name: Run Filipino Word of the Day
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DOT_API_KEY: ${{ secrets.DOT_API_KEY }}
+          DOT_DEVICE_ID: ${{ secrets.DOT_DEVICE_ID }}
+        run: python filipino_word.py
