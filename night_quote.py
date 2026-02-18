@@ -3,75 +3,82 @@ import requests
 from groq import Groq
 from datetime import datetime
 
-# 1. Setup Groq
+# 1. Setup
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+now = datetime.now()
+day_name = now.strftime("%A")
+full_date = now.strftime("%B %d, %Y")
 
-# 2. Get today's date to use as a 'Seed' for variety
-today = datetime.now().strftime("%A, %B %d, %Y")
+# Your Curated Council
+mentor_list = [
+    "Albert Einstein", "Abraham Lincoln", "Aristotle", "Benjamin Franklin", "Bill Gates",
+    "Brené Brown", "Bruce Lee", "Buddha", "Cal Newport", "Charlie Munger", "Confucius",
+    "Dale Carnegie", "Eleanor Roosevelt", "Elon Musk", "Epictetus", "Friedrich Nietzsche",
+    "George Washington", "Henry David Thoreau", "James Clear", "Jeff Bezos", "Jim Rohn",
+    "Jocko Willink", "John Wooden", "Jordan Peterson", "Lao Tzu", "Leonardo da Vinci",
+    "Malcolm X", "Marcus Aurelius", "Mark Twain", "Martin Luther King Jr.", "Maya Angelou",
+    "Napoleon Hill", "Naval Ravikant", "Oprah Winfrey", "Oscar Wilde", "Paulo Coelho",
+    "Peter Drucker", "Plato", "Ralph Waldo Emerson", "Ray Dalio", "Robin Sharma",
+    "Ryan Holiday", "Seneca", "Seth Godin", "Simon Sinek", "Socrates", "Steve Jobs",
+    "Sun Tzu", "Theodore Roosevelt", "Tim Ferriss", "Tony Robbins", "Vince Lombardi",
+    "Warren Buffett", "William James", "Winston Churchill", "Zig Ziglar"
+]
 
-# 3. Generate the quote
-try:
-    completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {
-                "role": "system", 
-                "content": (
-                    "You are a diverse quote generator for a 12-year-old kid. "
-                    "To prevent repetition, randomly choose a focus for today from: "
-                    "[Classic Sci-Fi, Modern Animation, Historical Inventors, Video Game Heroes, "
-                    "Nature/Space, or Mythological Wisdom]. "
-                    "Format: Quote | Author. Keep quote under 120 characters."
-                )
-            },
-            {
-                "role": "user", 
-                "content": f"Today is {today}. Provide a fresh, unique, and surprising quote."
-            }
-        ],
-        temperature=1.2 # Higher temperature = more randomness
-    )
-    raw_output = completion.choices[0].message.content.strip()
-    print(f"AI Output: {raw_output}")
-except Exception as e:
-    print(f"Error calling Groq: {e}")
-    raw_output = "You are capable of amazing things. | Inspiration"
+def get_ai_content():
+    mentors_str = ", ".join(mentor_list)
+    try:
+        completion = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {
+                    "role": "system", 
+                    "content": (
+                        "You are a content creator for kids (ages 6-11). Provide 3 items:\n\n"
+                        f"1. Mentor: A kid-translated quote from ONE person on this list: [{mentors_str}].\n"
+                        "2. GenAlpha: A quote or vibe from a character or icon kids love (Bluey, Minecraft, Taylor Swift, Spider-Man, etc.).\n"
+                        "3. Tagalog: A fun Filipino word (Mon/Wed/Fri: 6yo level, Tue/Thu: 9yo level, Sat/Sun: 11yo level).\n\n"
+                        "Format: Mentor: [Q]|[A] || GenAlpha: [Q]|[A] || Tagalog: [Word]|[Def]|[Phrase]"
+                    )
+                },
+                {"role": "user", "content": f"Today is {day_name}, {full_date}. Make it fresh!"}
+            ],
+            temperature=1.2
+        )
+        return completion.choices[0].message.content.strip()
+    except Exception:
+        return "Mentor: Be kind.|Plato || GenAlpha: For real life?|Bluey || Tagalog: Masaya|Happy|Masaya ako!"
 
-# 4. Parsing & Cleaning
-if "|" in raw_output:
-    parts = raw_output.split("|")
-    quote = parts[0].strip()
-    author = parts[1].strip()
-else:
-    quote = raw_output
-    author = "Inspiration"
+# 2. Parse & Push
+raw = get_ai_content()
+sections = raw.split("||")
 
-# Clean strings to avoid syntax errors
-clean_quote = quote.replace('"', '')
-clean_author = author.replace('"', '')
+def clean_split(text, prefix):
+    return [item.strip() for item in text.replace(prefix, "").strip().split("|")]
 
-final_message = clean_quote
-final_signature = f"- {clean_author}"
+m_q, m_a = clean_split(sections[0], "Mentor:")
+g_q, g_a = clean_split(sections[1], "GenAlpha:")
+t_w, t_d, t_p = clean_split(sections[2], "Tagalog:")
 
-# 5. Push to Dot. Quote/0 using DOT_API_KEY_2
-device_id = os.environ["DOT_DEVICE_ID"]
-url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
+url = f"https://dot.mindreset.tech/api/authV2/open/device/{os.environ['DOT_DEVICE_ID']}/text"
+headers = {"Authorization": f"Bearer {os.environ['DOT_API_KEY']}", "Content-Type": "application/json"}
 
-payload = {
-    "title": "Evening Thought",
-    "message": final_message,
-    "signature": final_signature,
-    "taskKey": "XOfUEqYdSjTr",  # Evening Slot
-    "refreshNow": True
-}
+# SLOT 1: The Mentor Mix
+requests.post(url, headers=headers, json={
+    "title": "Daily Wisdom",
+    "message": m_q[:80], "signature": f"- {m_a}",
+    "taskKey": "HlzQCJSj_Goo", "refreshNow": False
+})
 
-headers = {
-    "Authorization": f"Bearer {os.environ['DOT_API_KEY_2']}",
-    "Content-Type": "application/json"
-}
+# SLOT 2: The Gen Alpha Slot
+requests.post(url, headers=headers, json={
+    "title": "Today's Vibe",
+    "message": g_q[:80], "signature": f"- {g_a}",
+    "taskKey": "WWmY1iA8LfjJ", "refreshNow": False
+})
 
-try:
-    res = requests.post(url, json=payload, headers=headers)
-    print(f"Dot API Status: {res.status_code}")
-except Exception as e:
-    print(f"Connection Error: {e}")
+# SLOT 4: Filipino Word
+requests.post(url, headers=headers, json={
+    "title": f"Salita ng Araw: {t_w}",
+    "message": f"{t_d}\n\n'{t_p}'",
+    "taskKey": "bF84UsCAfkac", "refreshNow": True
+})
