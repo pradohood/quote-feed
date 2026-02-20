@@ -50,7 +50,6 @@ def get_ai_content():
         return completion.choices[0].message.content.strip()
     except Exception as e:
         print(f"Groq API Error: {e}")
-        # Robust fallback string to ensure parsing doesn't fail
         return "Mentor: Doing your best is a superpower.|Aristotle || GenAlpha: Be your own kind of girl group.|KATSEYE || Tagalog: Masaya|Happy|Masaya ako!"
 
 # 3. Parse Content
@@ -58,11 +57,9 @@ raw = get_ai_content()
 sections = raw.split("||")
 
 def clean_split(text, prefix):
-    # Splits by pipe and cleans up whitespace, returns list of parts
     parts = text.replace(prefix, "").strip().split("|")
     return [p.strip() for p in parts]
 
-# Parsing with safety defaults
 try:
     m_parts = clean_split(sections[0], "Mentor:")
     m_q, m_a = m_parts[0], m_parts[1]
@@ -83,6 +80,8 @@ api_key = os.environ["DOT_API_KEY"]
 url = f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text"
 headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
+# --- PUSH DATA ---
+
 # SLOT 1: The Mentor Mix
 requests.post(url, headers=headers, json={
     "title": "Daily Wisdom",
@@ -92,21 +91,5 @@ requests.post(url, headers=headers, json={
     "refreshNow": False
 })
 
-# SLOT 2: The Gen Alpha Slot
+# SLOT 2: The Gen Alpha Slot (Flipped: Name as Message, Quote as Signature)
 requests.post(url, headers=headers, json={
-    "title": "Today's Vibe",
-    "message": g_q[:80],
-    "signature": f"- {g_a}",
-    "taskKey": "WWmY1iA8LfjJ",
-    "refreshNow": False
-})
-
-# SLOT 4: Filipino Word (Salita ng Araw)
-requests.post(url, headers=headers, json={
-    "title": f"Salita ng Araw: {t_w}",
-    "message": f"{t_d}\n\n'{t_p}'",
-    "taskKey": "bF84UsCAfkac",
-    "refreshNow": True # Final push triggers the display refresh
-})
-
-print(f"Master Script Successful for {day_name}!")
