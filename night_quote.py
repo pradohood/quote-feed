@@ -136,9 +136,9 @@ try:
                     "Translate the big idea into a simple 1-sentence 'Note from a Friend'. Avoid jargon.\n"
                     f"2. GenAlpha: A vibe/quote from ONE of these icons the girls love: [{figures_str}]. "
                     "Focus on confidence, friendship, and sisterhood. No boys, no superheroes.\n"
-                    "3. Tagalog: A Filipino word. Mon/Wed/Fri: Simple (6yo level). Tue/Thu: Practical (9yo level). Sat/Sun: Deep (11yo level).\n\n"
-                    "STRICT LIMIT: All messages/quotes must be between 40-80 characters. Never under 40 characters.\n"
-                    "Format: Mentor: [Q]|[A] || GenAlpha: [Q]|[A] || Tagalog: [Word]|[Def]|[Phrase]"
+                    "3. Tagalog: A Filipino word. Mon/Wed/Fri: Simple (6yo level). Tue/Thu: Practical (9yo level). Sat/Sun: Deep (11yo level).\n"
+                    "   Format: [Word]|[English definition]|[Example phrase in Tagalog]\n"
+                    "   The example phrase MUST be in Tagalog/Filipino, not English.\n"
                 )
             },
             {
@@ -170,7 +170,7 @@ try:
 except Exception:
     m_q, m_a = "You are capable of great things.", "Aristotle"
     g_q, g_a = "Keep shining bright, you've got this!", "KATSEYE"
-    t_w, t_d, t_p = "Salamat", "Thank you", "Salamat po!"
+    t_w, t_d, t_p = "Salamat", "Thank you", "Salamat po sa lahat!"
 
 push_slot("Daily Wisdom",           m_q[:80], m_a[:80],          "HlzQCJSj_Goo", refresh_now=False, label="Mentor")
 push_slot("Today's Vibe",           g_q[:80], g_a[:80],          "WWmY1iA8LfjJ", refresh_now=False, label="GenAlpha")
