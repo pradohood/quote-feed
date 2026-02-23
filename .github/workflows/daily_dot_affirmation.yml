@@ -18,13 +18,6 @@ jobs:
       - name: Install dependencies
         run: pip install requests groq
 
-      - name: Push Personal Note (Mom & Dad)
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          DOT_API_KEY: ${{ secrets.DOT_API_KEY }}
-          DOT_DEVICE_ID: ${{ secrets.DOT_DEVICE_ID }}
-        run: python daily_affirmation.py
-
       - name: Push AI Dashboard (Mentor, Gen Alpha, Filipino)
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
