@@ -131,14 +131,35 @@ try:
             {
                 "role": "system",
                 "content": (
-                    "You are a content creator for 3 sisters (ages 6, 9, 11). Provide 3 items:\n\n"
-                    f"1. Mentor: A kid-translated wisdom nugget from ONE person on this list: [{mentors_str}]. "
-                    "Translate the big idea into a simple 1-sentence 'Note from a Friend'. Avoid jargon.\n"
-                    f"2. GenAlpha: A vibe/quote from ONE of these icons the girls love: [{figures_str}]. "
-                    "Focus on confidence, friendship, and sisterhood. No boys, no superheroes.\n"
-                    "3. Tagalog: A Filipino word. Mon/Wed/Fri: Simple (6yo level). Tue/Thu: Practical (9yo level). Sat/Sun: Deep (11yo level).\n"
-                    "   Format: [Word]|[English definition]|[Example phrase in Tagalog]\n"
-                    "   The example phrase MUST be in Tagalog/Filipino, not English.\n"
+                    "You are a content creator for 3 Filipino-Chinese sisters (ages 6, 9, 11). "
+                    "Every day must feel completely different from the last. Be creative and surprising.\n\n"
+
+                    "1. MENTOR WISDOM\n"
+                    f"   Pick ONE person from: [{mentors_str}]\n"
+                    "   Do NOT pick the same person two days in a row.\n"
+                    "   Translate their core idea into a fresh, punchy 1-sentence truth a child would feel.\n"
+                    "   Avoid: generic hustle quotes, 'believe in yourself', 'work hard'.\n"
+                    "   Aim for: surprising, specific, a little unexpected. Like a secret only that mentor knows.\n\n"
+
+                    "2. GIRL POWER VIBE\n"
+                    f"   Pick ONE icon from: [{figures_str}]\n"
+                    "   Write a vibe/quote inspired by their world — confidence, sisterhood, being weird and wonderful.\n"
+                    "   Avoid: love songs, boys, generic 'you can do it' energy.\n"
+                    "   Aim for: something that makes a girl feel seen and cool.\n\n"
+
+                    "3. SALITA NG ARAW\n"
+                    "   Pick a Filipino word that fits the day's energy and their Filipino-Chinese roots.\n"
+                    "   Mon/Wed/Fri: Simple and fun (6yo level).\n"
+                    "   Tue/Thu: Practical and useful (9yo level).\n"
+                    "   Sat/Sun: Deep and meaningful (11yo level). Occasionally include words about\n"
+                    "   family, roots, identity, or resilience that resonate with Filipino-Chinese culture.\n"
+                    "   The example phrase MUST be written in Tagalog/Filipino, not English.\n"
+                    "   Format: [Word]|[English definition]|[Example phrase in Tagalog]\n\n"
+
+                    "STRICT LIMITS:\n"
+                    "   - All quotes/messages must be 40-80 characters.\n"
+                    "   - Never under 40 characters.\n"
+                    "   - Output format: Mentor: [Q]|[A] || GenAlpha: [Q]|[A] || Tagalog: [Word]|[Def]|[Phrase]\n"
                 )
             },
             {
@@ -170,7 +191,7 @@ try:
 except Exception:
     m_q, m_a = "You are capable of great things.", "Aristotle"
     g_q, g_a = "Keep shining bright, you've got this!", "KATSEYE"
-    t_w, t_d, t_p = "Salamat", "Thank you", "Salamat po sa lahat!"
+    t_w, t_d, t_p = "Salamat", "Thank you", "Salamat po!"
 
 push_slot("Daily Wisdom",           m_q[:80], m_a[:80],          "HlzQCJSj_Goo", refresh_now=False, label="Mentor")
 push_slot("Today's Vibe",           g_q[:80], g_a[:80],          "WWmY1iA8LfjJ", refresh_now=False, label="GenAlpha")
