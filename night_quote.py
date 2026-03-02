@@ -61,6 +61,9 @@ seed_words = [
     "starfish", "blossom", "river", "feather", "compass", "cocoon", "anchor"
 ]
 
+def clean_text(text):
+    return text.replace('\\"', '').replace("\\'", '').replace('"', '').replace("'", '').strip()
+
 def push_slot(title, message, signature, task_key, refresh_now=False, label=""):
     print(f"Pushing {label}...")
     res = requests.post(url, headers=headers, json={
@@ -93,7 +96,8 @@ try:
                     "Focus on internal strength using themes: Safety Net, Release Valve, "
                     "Perspective, Humor, Internal Strength, Authenticity, or Action-Light. "
                     "Pick a DIFFERENT theme every time. Be warm and low-pressure. "
-                    "Never write less than 40 characters."
+                    "Never write less than 40 characters. "
+                    "Do NOT wrap output in quotation marks of any kind."
                 )
             },
             {
@@ -104,7 +108,7 @@ try:
         temperature=1.1,
         max_tokens=80
     )
-    affirmation = completion.choices[0].message.content.strip().replace('"', '')
+    affirmation = clean_text(completion.choices[0].message.content.strip())
 except Exception as e:
     print(f"Affirmation error: {e}")
     affirmation = "You're more than enough, exactly as you are."
@@ -119,7 +123,7 @@ push_slot(
 )
 
 
-# ── Part 2: Council + GenAlpha + Tagalog — Night Quote ────────────────────────
+# ── Part 2: Council + GenAlpha + Tagalog ──────────────────────────────────────
 print("Generating council content...")
 mentors_str = ", ".join(mentor_list)
 figures_str = ", ".join(gen_alpha_figures)
@@ -159,6 +163,7 @@ try:
                     "STRICT LIMITS:\n"
                     "   - All quotes/messages must be 40-80 characters.\n"
                     "   - Never under 40 characters.\n"
+                    "   - Do NOT wrap any output in quotation marks of any kind.\n"
                     "   - Output format: Mentor: [Q]|[A] || GenAlpha: [Q]|[A] || Tagalog: [Word]|[Def]|[Phrase]\n"
                 )
             },
@@ -172,14 +177,14 @@ try:
     raw = completion.choices[0].message.content.strip()
 except Exception as e:
     print(f"Council error: {e}")
-    raw = "Mentor: Doing your best is a superpower.|Aristotle || GenAlpha: Be your own kind of girl group.|KATSEYE || Tagalog: Masaya|Happy|Masaya ako!"
+    raw = "Mentor: Your curiosity is your greatest tool.|Aristotle || GenAlpha: Being different is your superpower.|Mirabel (Encanto) || Tagalog: Tapang|Courage|Kailangan natin ng tapang araw-araw."
 
 time.sleep(5)
 
 sections = raw.split("||")
 
 def clean_split(text, prefix):
-    return [p.strip() for p in text.replace(prefix, "").strip().split("|")]
+    return [clean_text(p) for p in text.replace(prefix, "").strip().split("|")]
 
 try:
     m_parts = clean_split(sections[0], "Mentor:")
@@ -189,13 +194,14 @@ try:
     t_parts = clean_split(sections[2], "Tagalog:")
     t_w, t_d, t_p = t_parts[0], t_parts[1], t_parts[2]
 except Exception:
-    m_q, m_a = "You are capable of great things.", "Aristotle"
-    g_q, g_a = "Keep shining bright, you've got this!", "KATSEYE"
-    t_w, t_d, t_p = "Salamat", "Thank you", "Salamat po!"
+    m_q, m_a = "Your curiosity is your greatest tool.", "Aristotle"
+    g_q, g_a = "Being different is your superpower.", "Mirabel (Encanto)"
+    t_w, t_d, t_p = "Tapang", "Courage", "Kailangan natin ng tapang araw-araw."
 
-push_slot("Daily Wisdom",           m_q[:80], m_a[:80],          "HlzQCJSj_Goo", refresh_now=False, label="Mentor")
-push_slot("Today's Vibe",           g_q[:80], g_a[:80],          "WWmY1iA8LfjJ", refresh_now=False, label="GenAlpha")
-push_slot(f"Salita ng Araw: {t_w}", f"{t_d}\n\n'{t_p}'", "",    "bF84UsCAfkac", refresh_now=True,  label="Tagalog")
+# title = label | message = quote (middle) | signature = author (bottom)
+push_slot("Daily Wisdom",    m_a[:80], m_q[:80],       "HlzQCJSj_Goo", refresh_now=False, label="Mentor")
+push_slot("Today's Vibe",    g_a[:80], g_q[:80],       "WWmY1iA8LfjJ", refresh_now=False, label="GenAlpha")
+push_slot(f"Salita: {t_w}", f"{t_d}\n\n{t_p}", "",    "bF84UsCAfkac", refresh_now=True,  label="Tagalog")
 
 
 # ── Final Log ──────────────────────────────────────────────────────────────────
