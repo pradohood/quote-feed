@@ -21,6 +21,11 @@ jobs:
         # UPDATED: Added requests, feedparser, and beautifulsoup4 for the comic script
         run: pip install Pillow google-genai requests feedparser beautifulsoup4
 
+      # --- ADD THIS DEBUG STEP ---
+      - name: Tell me what files are actually here
+        run: ls -la
+      # ---------------------------
+      
       - name: Generate Content
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
