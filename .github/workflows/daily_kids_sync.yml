@@ -16,7 +16,7 @@ jobs:
           python-version: '3.10'
       
       - name: Install Dependencies
-        run: pip install Pillow google-genai requests feedparser beautifulsoup4
+        run: pip install Pillow google-genai requests
       
       - name: Generate Daily Content
         env:
