@@ -6,6 +6,9 @@ on:
     - cron: "30 7 * * *"
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -29,11 +32,9 @@ jobs:
       - name: Generate NBA standings JSON
         run: node scripts/fetch_nba_standings.js
 
-
       # ---- rclone setup ----
       - name: Install rclone
-        run: |
-          curl https://rclone.org/install.sh | sudo bash
+        run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Configure rclone
         run: |
@@ -46,4 +47,3 @@ jobs:
           RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
         run: |
           rclone copyto ./nba_standings.json dropbox:"Apps/pradohood github/nba/nba_standings.json" -v
-
