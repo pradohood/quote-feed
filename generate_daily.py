@@ -2,60 +2,72 @@ import os
 import datetime
 import textwrap
 import time
-import random 
-from google import genai
+import random
+from groq import Groq
 from PIL import Image, ImageDraw, ImageFont
 
 # --- CONFIGURATION ---
-WIDTH, HEIGHT = 800, 480 
+WIDTH, HEIGHT = 800, 480
 WHITE = 255
 BLACK = 0
 
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+# Set GROQ_API_KEY in your GitHub Actions secrets
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 def get_content_safe(prompt):
-    # Try Lite first (Cheap), then Flash Latest (Reliable)
-    model_chain = ["gemini-2.0-flash-lite-001", "gemini-flash-latest"]
-    
+    """Call Groq API with model fallback chain."""
+    # All free on Groq's free tier
+    model_chain = [
+        "llama-3.1-8b-instant",   # fastest, very generous limits
+        "llama3-8b-8192",          # fallback
+        "gemma2-9b-it",            # second fallback
+    ]
+
     for model_name in model_chain:
         try:
-            print(f"Attempting with model: {model_name}...")
-            
-            # UPDATED PROMPT: "Strictly output only the content" removes side comments
-            final_prompt = (
-                f"{prompt} "
-                "Keep it under 180 characters. "
-                "Strictly output ONLY the requested text. "
-                "No introductory phrases, no conversational filler, no character count. "
-                "Kid-friendly for ages 11 and below."
-            )
-            
-            response = client.models.generate_content(
+            print(f"  Trying model: {model_name}...")
+            response = client.chat.completions.create(
                 model=model_name,
-                contents=final_prompt
+                max_tokens=120,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are a helpful assistant for kids aged 11 and below. "
+                            "Output ONLY the requested text — no intro, no commentary, "
+                            "no character count, no quotation marks. "
+                            "Keep responses under 180 characters."
+                        )
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ]
             )
-            return response.text.strip()
+            return response.choices[0].message.content.strip()
         except Exception as e:
-            print(f"Model {model_name} failed: {e}")
+            print(f"  {model_name} failed: {e}")
             time.sleep(1)
-            
-    return None 
+
+    return None
+
 
 def create_png(title, text, filename):
     img = Image.new('L', (WIDTH, HEIGHT), WHITE)
     draw = ImageDraw.Draw(img)
-    
+
     try:
         title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 50)
-        body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 35)
-        date_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
-    except:
+        body_font  = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 35)
+        date_font  = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
+    except Exception:
         title_font = body_font = date_font = ImageFont.load_default()
 
     draw.text((40, 30), title, font=title_font, fill=BLACK)
-    draw.line((40, 100, WIDTH-40, 100), fill=BLACK, width=4)
+    draw.line((40, 100, WIDTH - 40, 100), fill=BLACK, width=4)
 
-    lines = textwrap.wrap(text, width=35) 
+    lines = textwrap.wrap(text, width=35)
     y_text = 140
     for line in lines:
         draw.text((40, y_text), line, font=body_font, fill=BLACK)
@@ -67,65 +79,65 @@ def create_png(title, text, filename):
     draw.text((x_date, 430), today, font=date_font, fill=BLACK)
 
     img.save(filename)
-    print(f"SUCCESS: Created {filename}")
+    print(f"  ✓ Saved {filename}")
 
-# --- EXPANDED TOPICS LIST ---
+
+# --- TOPICS ---
 today_str = datetime.datetime.now().strftime("%B %d")
 
 animal_topics = [
-    "ocean creature", "jungle animal", "bird", "insect", "reptile", 
+    "ocean creature", "jungle animal", "bird", "insect", "reptile",
     "arctic animal", "dinosaur", "desert animal", "rainforest animal",
     "nocturnal animal", "mammal", "amphibian", "Australian animal",
     "African animal", "strange/weird animal", "endangered animal"
 ]
-
 joke_topics = [
-    "pun", "knock-knock joke", "science joke", "animal joke", 
-    "school joke", "food joke", "space joke", "sports joke", 
-    "math joke", "music joke", "history joke", "winter/snow joke", 
+    "pun", "knock-knock joke", "science joke", "animal joke",
+    "school joke", "food joke", "space joke", "sports joke",
+    "math joke", "music joke", "history joke", "winter/snow joke",
     "summer/beach joke", "pirate joke", "robot joke"
 ]
-
 affirm_topics = [
-    "confidence", "kindness", "learning", "friendship", "bravery", 
-    "creativity", "gratitude", "patience", "honesty", "resilience", 
+    "confidence", "kindness", "learning", "friendship", "bravery",
+    "creativity", "gratitude", "patience", "honesty", "resilience",
     "generosity", "curiosity", "health/strength", "family", "nature"
 ]
 
 tasks = {
     "history.png": {
         "title": "ON THIS DAY",
-        "prompt": f"Tell me an interesting historical event that happened on {today_str}.",
-        "backup": "On this day: The world kept spinning! (API Quota Hit)"
+        "prompt": f"Tell me one interesting historical event that happened on {today_str}.",
+        "backup": "On this day: The world kept spinning! (API unavailable)"
     },
     "animal.png": {
         "title": "ANIMAL FACT",
-        "prompt": f"Tell me a cool animal fact about a {random.choice(animal_topics)}.",
+        "prompt": f"Tell me one cool fact about a {random.choice(animal_topics)}.",
         "backup": "Did you know? Cats sleep 70% of their lives!"
     },
     "affirmation.png": {
         "title": "AFFIRMATION",
-        "prompt": f"Give me a positive kid-friendly affirmation about {random.choice(affirm_topics)}.",
+        "prompt": f"Give me one positive affirmation for kids about {random.choice(affirm_topics)}.",
         "backup": "I am capable of solving any problem!"
     },
     "joke.png": {
         "title": "DAD JOKE",
-        "prompt": f"Tell me a funny dad joke about {random.choice(joke_topics)}.",
+        "prompt": f"Tell me one funny kid-friendly dad joke about {random.choice(joke_topics)}.",
         "backup": "Why did the computer go to the doctor? It had a virus!"
     }
 }
 
 # --- RUN ---
 for filename, data in tasks.items():
-    print(f"--- Generating {filename} ---")
-    
+    print(f"\n--- Generating {filename} ---")
+
     content = get_content_safe(data["prompt"])
-    
+
     if not content:
-        print("All models failed. Using BACKUP text.")
+        print("  All models failed. Using backup text.")
         content = data["backup"]
-        
+
     create_png(data["title"], content, filename)
-    
-    print("Waiting 20 seconds...")
-    time.sleep(20)
+    # Groq is fast — no long waits needed
+    time.sleep(1)
+
+print("\nAll done!")
