@@ -3,6 +3,7 @@ import datetime
 import textwrap
 import time
 import random
+import requests
 from groq import Groq
 from PIL import Image, ImageDraw, ImageFont
 
@@ -51,6 +52,58 @@ def get_content_safe(prompt):
             time.sleep(1)
 
     return None
+
+
+def get_history_fact():
+    """Fetch a real event from Wikipedia's On This Day API, then rewrite it for kids."""
+    now = datetime.datetime.now()
+    month, day = now.month, now.day
+
+    try:
+        print("  Fetching from Wikipedia On This Day API...")
+        url = f"https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/{month}/{day}"
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        events = resp.json().get("events", [])
+
+        if not events:
+            raise ValueError("No events returned")
+
+        # Pick a random event from the top 10 to add variety
+        event = random.choice(events[:10])
+        raw_fact = f"In {event['year']}, {event['text']}"
+        print(f"  Wikipedia fact: {raw_fact[:80]}...")
+
+    except Exception as e:
+        print(f"  Wikipedia API failed: {e}")
+        return None
+
+    # Now rewrite it for kids using the slower, smarter model
+    try:
+        print("  Rewriting for kids with llama-3.3-70b-versatile...")
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=120,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You rewrite historical facts for kids aged 11 and below. "
+                        "Keep it fun, simple, and under 180 characters. "
+                        "Output ONLY the rewritten fact — no intro, no commentary, no quotation marks."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": f"Rewrite this for kids: {raw_fact}"
+                }
+            ]
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print(f"  Groq rewrite failed: {e}, using raw fact")
+        # Fall back to raw Wikipedia text trimmed to fit
+        return raw_fact[:180]
 
 
 def create_png(title, text, filename):
@@ -130,14 +183,16 @@ tasks = {
 for filename, data in tasks.items():
     print(f"\n--- Generating {filename} ---")
 
-    content = get_content_safe(data["prompt"])
+    if filename == "history.png":
+        content = get_history_fact()
+    else:
+        content = get_content_safe(data["prompt"])
 
     if not content:
         print("  All models failed. Using backup text.")
         content = data["backup"]
 
     create_png(data["title"], content, filename)
-    # Groq is fast — no long waits needed
     time.sleep(1)
 
 print("\nAll done!")
