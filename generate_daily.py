@@ -3,7 +3,6 @@ import datetime
 import textwrap
 import time
 import random
-import requests
 from groq import Groq
 from PIL import Image, ImageDraw, ImageFont
 
@@ -11,6 +10,12 @@ from PIL import Image, ImageDraw, ImageFont
 WIDTH, HEIGHT = 800, 480
 WHITE = 255
 BLACK = 0
+
+# Philippine Time = UTC+8
+PHT = datetime.timezone(datetime.timedelta(hours=8))
+
+def now_pht():
+    return datetime.datetime.now(tz=PHT)
 
 # Set GROQ_API_KEY in your GitHub Actions secrets
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
@@ -55,32 +60,10 @@ def get_content_safe(prompt):
 
 
 def get_history_fact():
-    """Fetch a real event from Wikipedia's On This Day API, then rewrite it for kids."""
-    now = datetime.datetime.now()
-    month, day = now.month, now.day
-
+    """Ask Groq for a verified historical fact for today using the smarter 70b model."""
+    today_str = now_pht().strftime("%B %d")
     try:
-        print("  Fetching from Wikipedia On This Day API...")
-        url = f"https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/{month}/{day}"
-        resp = requests.get(url, timeout=10)
-        resp.raise_for_status()
-        events = resp.json().get("events", [])
-
-        if not events:
-            raise ValueError("No events returned")
-
-        # Pick a random event from the top 10 to add variety
-        event = random.choice(events[:10])
-        raw_fact = f"In {event['year']}, {event['text']}"
-        print(f"  Wikipedia fact: {raw_fact[:80]}...")
-
-    except Exception as e:
-        print(f"  Wikipedia API failed: {e}")
-        return None
-
-    # Now rewrite it for kids using the slower, smarter model
-    try:
-        print("  Rewriting for kids with llama-3.3-70b-versatile...")
+        print("  Asking llama-3.3-70b-versatile for history fact...")
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             max_tokens=120,
@@ -88,22 +71,23 @@ def get_history_fact():
                 {
                     "role": "system",
                     "content": (
-                        "You rewrite historical facts for kids aged 11 and below. "
+                        "You are a historian for kids aged 11 and below. "
+                        "Only share historical events you are highly confident actually occurred on the exact date given. "
+                        "If unsure of the exact date, do NOT guess — pick a different event you are certain about. "
                         "Keep it fun, simple, and under 180 characters. "
-                        "Output ONLY the rewritten fact — no intro, no commentary, no quotation marks."
+                        "Output ONLY the fact — no intro, no commentary, no quotation marks."
                     )
                 },
                 {
                     "role": "user",
-                    "content": f"Rewrite this for kids: {raw_fact}"
+                    "content": f"Tell me one real historical event that happened on {today_str}. Only include it if you are certain of the date."
                 }
             ]
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        print(f"  Groq rewrite failed: {e}, using raw fact")
-        # Fall back to raw Wikipedia text trimmed to fit
-        return raw_fact[:180]
+        print(f"  History fact failed: {e}")
+        return None
 
 
 def create_png(title, text, filename):
@@ -126,7 +110,7 @@ def create_png(title, text, filename):
         draw.text((40, y_text), line, font=body_font, fill=BLACK)
         y_text += 50
 
-    today = datetime.datetime.now().strftime("%A, %b %d, %Y")
+    today = now_pht().strftime("%A, %b %d, %Y")
     bbox = draw.textbbox((0, 0), today, font=date_font)
     x_date = (WIDTH - (bbox[2] - bbox[0])) / 2
     draw.text((x_date, 430), today, font=date_font, fill=BLACK)
@@ -136,7 +120,7 @@ def create_png(title, text, filename):
 
 
 # --- TOPICS ---
-today_str = datetime.datetime.now().strftime("%B %d")
+today_str = now_pht().strftime("%B %d")
 
 animal_topics = [
     "ocean creature", "jungle animal", "bird", "insect", "reptile",
