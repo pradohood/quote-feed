@@ -3,21 +3,26 @@ on:
   schedule:
     - cron: '0 12 * * *'
   workflow_dispatch:
+
 jobs:
   update_images:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      
+
       - name: Install Dependencies
         run: pip install Pillow groq requests
-      
+
       - name: Generate Daily Content
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -29,7 +34,7 @@ jobs:
             echo "✗ generate_daily.py failed with exit code $?"
             exit 1
           fi
-      
+
       - name: Fetch Asher Comic
         run: |
           python fetch_asher.py
@@ -39,7 +44,7 @@ jobs:
             echo "✗ fetch_asher.py failed with exit code $?"
             exit 1
           fi
-      
+
       - name: Verify All Files Created
         run: |
           echo "=== Checking generated files ==="
@@ -51,31 +56,22 @@ jobs:
               echo "✗ $file MISSING"
             fi
           done
-          
+
           if ! [ -f asher_comic.png ]; then
-            echo ""
             echo "ERROR: asher_comic.png was not created!"
             exit 1
           fi
-      
-      - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
-      
-      - name: Upload to Dropbox
-        env:
-          RCLONE_CONFIG_DROPBOX_TYPE: dropbox
-          RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
+
+      - name: Commit and Push Images
         run: |
-          echo "=== Uploading files to Dropbox ==="
-          rclone copy ./history.png dropbox:"Apps/pradohood github/"
-          rclone copy ./animal.png dropbox:"Apps/pradohood github/"
-          rclone copy ./affirmation.png dropbox:"Apps/pradohood github/"
-          rclone copy ./joke.png dropbox:"Apps/pradohood github/"
-          rclone copy ./asher_comic.png dropbox:"Apps/pradohood github/"
-          
-          if [ $? -eq 0 ]; then
-            echo "✓ All files uploaded successfully"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add history.png animal.png affirmation.png joke.png asher_comic.png
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
           else
-            echo "✗ rclone upload failed"
-            exit 1
+            git commit -m "chore: daily e-ink update $(date -u '+%Y-%m-%d')"
+            git push
           fi
