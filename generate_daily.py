@@ -71,16 +71,21 @@ def get_history_fact():
                 {
                     "role": "system",
                     "content": (
-                        "You are a historian for kids aged 11 and below. "
-                        "Only share historical events you are highly confident actually occurred on the exact date given. "
-                        "If unsure of the exact date, do NOT guess — pick a different event you are certain about. "
-                        "Keep it fun, simple, and under 180 characters. "
-                        "Output ONLY the fact — no intro, no commentary, no quotation marks."
+                        "You pick fun historical facts for kids aged 11 and below. "
+                        "AVOID: battles, wars, treaties, political elections, or anything violent. "
+                        "PREFER: space missions, cool inventions, amazing animals, sports records, "
+                        "fun world firsts, popular movies/games/toys launched, or surprising science discoveries. "
+                        "Only share events you are highly confident happened on the exact date. "
+                        "Write like you're excitedly telling a friend — fun and simple. "
+                        "Under 180 characters. Output ONLY the fact, no intro, no quotation marks."
                     )
                 },
                 {
                     "role": "user",
-                    "content": f"Tell me one real historical event that happened on {today_str}. Only include it if you are certain of the date."
+                    "content": (
+                        f"What's a fun, kid-friendly thing that happened on {today_str} in history? "
+                        "No wars or battles please!"
+                    )
                 }
             ]
         )
