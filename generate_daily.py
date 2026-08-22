@@ -24,9 +24,8 @@ def get_content_safe(prompt):
     """Call Groq API with model fallback chain."""
     # All free on Groq's free tier
     model_chain = [
-        "llama-3.1-8b-instant",   # fastest, very generous limits
-        "llama3-8b-8192",          # fallback
-        "gemma2-9b-it",            # second fallback
+        "openai/gpt-oss-20b",   # fast production model
+        "openai/gpt-oss-120b",  # slower but smarter fallback
     ]
 
     for model_name in model_chain:
@@ -63,9 +62,9 @@ def get_history_fact():
     """Ask Groq for a verified historical fact for today using the smarter 70b model."""
     today_str = now_pht().strftime("%B %d")
     try:
-        print("  Asking llama-3.3-70b-versatile for history fact...")
+        print("  Asking openai/gpt-oss-120b for history fact...")
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             max_tokens=120,
             messages=[
                 {
