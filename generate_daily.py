@@ -37,7 +37,7 @@ def get_content_safe(prompt):
             print(f"  Trying model: {model_name}...")
             response = client.chat.completions.create(
                 model=model_name,
-                max_tokens=120,
+                max_tokens=80,
                 messages=[
                     {
                         "role": "system",
@@ -69,7 +69,7 @@ def get_history_fact():
         print("  Asking openai/gpt-oss-120b for history fact...")
         response = client.chat.completions.create(
             model="openai/gpt-oss-120b",
-            max_tokens=120,
+            max_tokens=80,
             messages=[
                 {
                     "role": "system",
@@ -185,6 +185,7 @@ for filename, data in tasks.items():
         content = data["backup"]
 
     create_png(data["title"], content, filename)
-    time.sleep(1)
+    print("  Waiting 15 seconds...")
+    time.sleep(15)
 
 print("\nAll done!")
