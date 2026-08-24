@@ -18,11 +18,15 @@ def now_pht():
     return datetime.datetime.now(tz=PHT)
 
 # Set GROQ_API_KEY in your GitHub Actions secrets
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+api_key = os.environ.get("GROQ_API_KEY")
+if not api_key:
+    print("ERROR: GROQ_API_KEY environment variable is not set!")
+else:
+    print(f"  API key found: {api_key[:8]}...")
+client = Groq(api_key=api_key)
 
 def get_content_safe(prompt):
     """Call Groq API with model fallback chain."""
-    # All free on Groq's free tier
     model_chain = [
         "openai/gpt-oss-20b",   # fast production model
         "openai/gpt-oss-120b",  # slower but smarter fallback
@@ -52,7 +56,7 @@ def get_content_safe(prompt):
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
-            print(f"  {model_name} failed: {e}")
+            print(f"  ERROR on {model_name}: {type(e).__name__}: {e}")
             time.sleep(1)
 
     return None
