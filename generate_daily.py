@@ -29,37 +29,32 @@ client = Groq(api_key=api_key)
 def get_content_safe(prompt):
     """Call Groq API with model fallback chain."""
     model_chain = [
-        "openai/gpt-oss-20b",   # fast production model
-        "openai/gpt-oss-120b",  # slower but smarter fallback
+        "openai/gpt-oss-20b",
+        "openai/gpt-oss-120b",
     ]
 
     for model_name in model_chain:
-        try:
-            print(f"  Trying model: {model_name}...")
-            response = client.chat.completions.create(
-                model=model_name,
-                max_tokens=80,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "You are a helpful assistant for kids aged 11 and below. "
-                            "Output ONLY the requested text — no intro, no commentary, "
-                            "no character count, no quotation marks. "
-                            "Keep responses under 180 characters."
-                        )
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ]
-            )
-            return response.choices[0].message.content.strip()
-        except Exception as e:
-            import sys
-            print(f"  ERROR on {model_name}: {type(e).__name__}: {e}", file=sys.stderr, flush=True)
-            time.sleep(1)
+        print(f"  Trying model: {model_name}...", flush=True)
+        response = client.chat.completions.create(
+            model=model_name,
+            max_tokens=80,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a helpful assistant for kids aged 11 and below. "
+                        "Output ONLY the requested text — no intro, no commentary, "
+                        "no character count, no quotation marks. "
+                        "Keep responses under 180 characters."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
+        return response.choices[0].message.content.strip()
 
     return None
 
