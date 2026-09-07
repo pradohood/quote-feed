@@ -66,16 +66,19 @@ jobs:
           RCLONE_CONFIG_DROPBOX_TYPE: dropbox
           RCLONE_CONFIG_DROPBOX_TOKEN: ${{ secrets.RCLONE_DROPBOX_TOKEN }}
         run: |
-          echo "=== Uploading files to Dropbox ==="
-          rclone copy ./history.png dropbox:"Apps/pradohood github/"
-          rclone copy ./animal.png dropbox:"Apps/pradohood github/"
-          rclone copy ./affirmation.png dropbox:"Apps/pradohood github/"
-          rclone copy ./joke.png dropbox:"Apps/pradohood github/"
-          rclone copy ./asher_comic.png dropbox:"Apps/pradohood github/"
-          
-          if [ $? -eq 0 ]; then
-            echo "✓ All files uploaded successfully"
-          else
-            echo "✗ rclone upload failed"
-            exit 1
-          fi
+          set -euo pipefail
+
+          echo "=== Checking Dropbox connection ==="
+          rclone about dropbox: || echo "WARNING: rclone about failed"
+
+          echo "=== Listing destination BEFORE upload ==="
+          rclone lsl dropbox:"Apps/pradohood github/" || echo "WARNING: could not list destination"
+
+          echo "=== Uploading files ==="
+          for f in history.png animal.png affirmation.png joke.png asher_comic.png; do
+            echo "--- $f ---"
+            rclone copy -v --stats-one-line "./$f" dropbox:"Apps/pradohood github/"
+          done
+
+          echo "=== Listing destination AFTER upload ==="
+          rclone lsl dropbox:"Apps/pradohood github/"
