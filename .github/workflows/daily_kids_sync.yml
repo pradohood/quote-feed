@@ -6,6 +6,8 @@ on:
 jobs:
   update_images:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -40,16 +42,17 @@ jobs:
             exit 1
           fi
       
-      - name: Persist last good comic
+      - name: Commit images to repo
         run: |
-          if [ -f last_comic.png ] && ! git diff --quiet -- last_comic.png; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add last_comic.png
-            git commit -m "Update cached comic [skip ci]"
-            git push
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A history.png animal.png affirmation.png joke.png asher_comic.png last_comic.png
+          if git diff --cached --quiet; then
+            echo "No image changes to commit."
           else
-            echo "No change to last_comic.png; nothing to commit."
+            git commit -m "Daily update $(date -u +%Y-%m-%d) [skip ci]"
+            git push
+            echo "Pushed updated images."
           fi
 
       - name: Verify All Files Created
