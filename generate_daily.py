@@ -9,7 +9,7 @@ import traceback
 from groq import Groq
 from PIL import Image, ImageDraw, ImageFont
 
-SCRIPT_VERSION = "v8-history-tokens"
+SCRIPT_VERSION = "v9-kid-history"
 print(f"=== generate_daily.py {SCRIPT_VERSION} ===", flush=True)
 
 # --- CONFIGURATION ---
@@ -100,21 +100,36 @@ KID_SYSTEM = (
 )
 
 HISTORY_SYSTEM = (
-    "You pick fun historical facts for kids aged 11 and below. "
-    "AVOID: battles, wars, treaties, political elections, or anything violent. "
-    "PREFER: space missions, cool inventions, amazing animals, sports records, "
-    "fun world firsts, popular movies/games/toys launched, or surprising science "
-    "discoveries. Only share events you are highly confident happened on the exact "
-    "date. Write like you're excitedly telling a friend — fun and simple. "
-    "Under 180 characters. Output ONLY the fact, no intro, no quotation marks."
+    "You pick historical facts for children aged 6 to 12.\n"
+    "\n"
+    "GOOD topics — things this age group already cares about:\n"
+    "space and astronauts, dinosaurs and fossils, animals and zoos, "
+    "video games, cartoons, toys and theme parks, candy and food inventions, "
+    "sports records, rollercoasters, LEGO, robots, world records, "
+    "kids' books and movies, inventions they use every day "
+    "(bikes, ice cream, crayons, the internet).\n"
+    "\n"
+    "AVOID: wars, battles, treaties, elections, politics, disasters, "
+    "anyone dying, and anything frightening.\n"
+    "\n"
+    "STYLE: Talk to a curious 8-year-old. Short words, one or two sentences. "
+    "Include the year. Lead with the surprising part. Never explain that it is "
+    "surprising, just say it.\n"
+    "\n"
+    "Pick a well-known event you are confident about and answer right away. "
+    "Do not deliberate over many options.\n"
+    "\n"
+    "Under 180 characters. Output ONLY the fact — no intro, no quotation marks."
 )
 
 
 def get_history_fact():
     today_str = now_pht().strftime("%B %d")
     user_prompt = (
-        f"What's a fun, kid-friendly thing that happened on {today_str} in history? "
-        "No wars or battles please!"
+        f"Today is {today_str}. Tell me one fun thing that happened on this day "
+        "in history that a kid would think is cool. "
+        "If nothing good comes to mind for this exact date, pick a fun moment "
+        "from history instead — do not say which date it was."
     )
     # 120b reasons heavily on this prompt, so give it far more room
     print(f"  Asking {SMART_MODEL} for history fact...", flush=True)
@@ -144,7 +159,8 @@ def create_png(title, text, filename):
     draw.line((40, 100, WIDTH - 40, 100), fill=BLACK, width=4)
 
     y_text = 140
-    for line in textwrap.wrap(text, width=35):
+    MAX_LINES = 5  # 5 lines ends at y=390, clear of the date at y=430
+    for line in textwrap.wrap(text, width=35)[:MAX_LINES]:
         draw.text((40, y_text), line, font=body_font, fill=BLACK)
         y_text += 50
 
