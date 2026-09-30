@@ -9,7 +9,7 @@ import traceback
 from groq import Groq
 from PIL import Image, ImageDraw, ImageFont
 
-SCRIPT_VERSION = "v7-diagnostic"
+SCRIPT_VERSION = "v8-history-tokens"
 print(f"=== generate_daily.py {SCRIPT_VERSION} ===", flush=True)
 
 # --- CONFIGURATION ---
@@ -37,11 +37,11 @@ print(f"API key found: {api_key[:8]}...", flush=True)
 client = Groq(api_key=api_key)
 
 
-def call_model(model_name, system_prompt, user_prompt):
+def call_model(model_name, system_prompt, user_prompt, max_tokens=1000):
     """One API call. Returns the text, or None with the reason printed."""
     kwargs = {
         "model": model_name,
-        "max_tokens": 1000,
+        "max_tokens": max_tokens,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -49,17 +49,25 @@ def call_model(model_name, system_prompt, user_prompt):
     }
 
     # reasoning_effort is only valid on gpt-oss models; retry without it if rejected
-    for attempt_kwargs in (dict(kwargs, reasoning_effort="low"), kwargs):
+    attempts = [dict(kwargs, reasoning_effort="low"), kwargs]
+    for i, attempt_kwargs in enumerate(attempts):
         try:
             response = client.chat.completions.create(**attempt_kwargs)
         except TypeError as e:
-            print(f"  SDK rejected a parameter ({e}); retrying without it.", flush=True)
+            print(f"  SDK rejected reasoning_effort ({e}); retrying without it.", flush=True)
             continue
-        except Exception:
+        except Exception as e:
+            # Some SDK versions surface bad params as an API error, not TypeError
+            if i == 0 and "reasoning_effort" in str(e):
+                print(f"  API rejected reasoning_effort; retrying without it.", flush=True)
+                continue
             print(f"  EXCEPTION on {model_name}:", flush=True)
             traceback.print_exc(file=sys.stdout)
             sys.stdout.flush()
             return None
+
+        if i == 0:
+            print(f"  (reasoning_effort=low accepted)", flush=True)
 
         choice = response.choices[0]
         text = (choice.message.content or "").strip()
@@ -104,13 +112,18 @@ HISTORY_SYSTEM = (
 
 def get_history_fact():
     today_str = now_pht().strftime("%B %d")
-    print(f"  Asking {SMART_MODEL} for history fact...", flush=True)
-    return call_model(
-        SMART_MODEL,
-        HISTORY_SYSTEM,
+    user_prompt = (
         f"What's a fun, kid-friendly thing that happened on {today_str} in history? "
-        "No wars or battles please!",
+        "No wars or battles please!"
     )
+    # 120b reasons heavily on this prompt, so give it far more room
+    print(f"  Asking {SMART_MODEL} for history fact...", flush=True)
+    text = call_model(SMART_MODEL, HISTORY_SYSTEM, user_prompt, max_tokens=4000)
+    if text:
+        return text
+
+    print(f"  Falling back to {FAST_MODEL} for history...", flush=True)
+    return call_model(FAST_MODEL, HISTORY_SYSTEM, user_prompt, max_tokens=4000)
 
 
 def create_png(title, text, filename):
